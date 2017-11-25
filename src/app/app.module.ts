@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import {CoreModule} from './core/core.module';
+import { CoreModule } from './core/core.module';
+import { HeroesModule } from './heroes/heroes.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {CoreModule} from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    CoreModule
+    CoreModule,
+    HeroesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
