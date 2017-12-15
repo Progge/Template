@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email.component.css']
 })
 export class EmailComponent implements OnInit {
+  email: any;
+  password: any;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    console.log(this.email, this.password);
+  }
 }

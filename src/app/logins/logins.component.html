@@ -1,9 +1,17 @@
 <div id="login-div">
   <mat-card>
     <mat-tab-group>
-      <app-facebook></app-facebook>
-      <app-gmail></app-gmail>
-      <app-email></app-email>
+      <mat-tab label="Logga In">
+        <app-facebook></app-facebook>
+        <app-google></app-google>
+        <div class="divider">
+          <hr class="left"/><b style="color:#888888">ELLER</b><hr class="right" />
+        </div>
+        <app-email></app-email>
+      </mat-tab>
+      <mat-tab label="Skapa Konto">
+        <app-signup></app-signup>
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>
