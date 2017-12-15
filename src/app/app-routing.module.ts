@@ -5,7 +5,7 @@ import {NavComponent} from './core/nav/nav.component';
 
 const routes: Routes = [
   {
-    path: ''
+    path: '',
     component: NavComponent,
   },
   {
