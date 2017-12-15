@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PasswordValidators } from '../password/password.validators';
 
 @Component({
   selector: 'app-email',

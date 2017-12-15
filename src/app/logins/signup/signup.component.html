@@ -1,14 +1,20 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
   <mat-input-container>
-    <input matInput placeholder="Email" [(ngModel)]="email" name="email">
+    <input matInput placeholder="Email" formControlName="email">
   </mat-input-container>
-  <mat-input-container>
-    <input matInput placeholder="Lösenord" type="password" [(ngModel)]="password" name="password">
-  </mat-input-container>
-  <mat-input-container>
-    <input matInput placeholder="Upprepa Lösenord" type="password" [(ngModel)]="repeat" name="repeat">
-  </mat-input-container>
-  <div class="login-button-div">
-    <button mat-raised-button color="primary" id="email" class="login-button"> Logga in med Email</button>
+  <div formGroupName="passwords">
+    <mat-input-container>
+      <input matInput placeholder="Lösenord" type="password" formControlName="password">
+    </mat-input-container>
+    <mat-input-container>
+      <input matInput placeholder="Upprepa Lösenord" type="password" formControlName="repeat">
+    </mat-input-container>
+    <div *ngIf="repeat.dirty && passwords.errors && passwords.errors.passwordsDoNotMatch">
+      Lösenorden skiljer sig.
+    </div>
+    <!--Submit-->
+    <div class="login-button-div">
+      <button mat-raised-button color="primary" id="email" class="login-button">Skapa Konto</button>
+    </div>
   </div>
 </form>
