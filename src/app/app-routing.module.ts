@@ -11,8 +11,8 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginsComponent,
-  }, ;
-}]
+  },
+  ];
 
 
 const config: ExtraOptions = {
