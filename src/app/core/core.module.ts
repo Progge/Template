@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import {MatIconModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatProgressSpinnerModule, MatToolbarModule, MatCardModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -10,7 +10,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     CommonModule,
     MatToolbarModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule,
   ],
   declarations: [NavComponent, SpinnerComponent],
   exports: [NavComponent, SpinnerComponent]
