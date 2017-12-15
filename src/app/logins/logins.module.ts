@@ -7,6 +7,8 @@ import { FacebookComponent } from './facebook/facebook.component';
 import {LoginsRoutingModule} from './logins-routing.module';
 import {CoreModule} from '../core/core.module';
 import { MatTabsModule, MatCardModule } from '@angular/material';
+import { GmailComponent } from './gmail/gmail.component';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { MatTabsModule, MatCardModule } from '@angular/material';
   declarations: [
     LoginsComponent,
     FacebookComponent,
+    GmailComponent,
+    EmailComponent,
   ],
   providers: [
   ]
