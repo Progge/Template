@@ -9,6 +9,7 @@ import {CoreModule} from '../core/core.module';
 import { MatTabsModule, MatCardModule } from '@angular/material';
 import { GmailComponent } from './gmail/gmail.component';
 import { EmailComponent } from './email/email.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { EmailComponent } from './email/email.component';
     LoginsRoutingModule,
     MatTabsModule,
     MatCardModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     LoginsComponent,
