@@ -1,8 +1,31 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-    <span>Template App</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-  </mat-toolbar-row>
+      <span>Progge AB</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <mat-icon class="example-icon">delete</mat-icon>
+      <mat-icon
+        class="example-icon"
+        (click)="start.toggle(undefined, 'mouse')"
+      >
+        menu
+      </mat-icon>
+    </mat-toolbar-row>
 </mat-toolbar>
+
+<div class="demo-sidenav-area">
+  <mat-sidenav-container>
+    <mat-sidenav #start (open)="myinput.focus()" [mode]="mode">
+      Det här är en mr Sidenav
+      <br>
+      <button mat-button (click)="start.close('mouse')">Close</button>
+      <input #myinput>
+      <div class="demo-filler-content" *ngFor="let c of fillerContent">Filler Content</div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>
