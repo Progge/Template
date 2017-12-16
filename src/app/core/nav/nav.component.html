@@ -13,19 +13,26 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="demo-sidenav-area">
-  <mat-sidenav-container>
-    <mat-sidenav #start (open)="myinput.focus()" [mode]="mode">
-      Det här är en mr Sidenav
-      <br>
-      <button mat-button (click)="start.close('mouse')">Close</button>
-      <input #myinput>
-      <div class="demo-filler-content" *ngFor="let c of fillerContent">Filler Content</div>
-    </mat-sidenav>
 
-    <mat-sidenav-content>
-      <ng-content></ng-content>
-    </mat-sidenav-content>
+<mat-sidenav-container>
+  <mat-sidenav #start (open)="myinput.focus()" [mode]="mode">
+    <button mat-button>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <span>LIKE</span>
+    </button>
+    <br>
+    <button mat-button>
+      <mat-icon class="example-icon">delete</mat-icon>
+      <span>DELETE</span>
+    </button>
+    <br>
+    <button mat-button (click)="start.close('mouse')">
+      <mat-icon class="example-icon">close</mat-icon>
+      <span>CLOSE</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-  </mat-sidenav-container>
-</div>

@@ -4,7 +4,7 @@ import { NavComponent } from './nav/nav.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {
   MatIconModule, MatProgressSpinnerModule, MatToolbarModule, MatCardModule, MatTabsModule,
-  MatSidenavModule, MatCheckboxModule
+  MatSidenavModule, MatCheckboxModule, MatMenuModule, MatButtonModule
 } from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
@@ -19,6 +19,8 @@ import {FormsModule} from '@angular/forms';
     MatProgressSpinnerModule,
     MatCardModule,
     MatTabsModule,
+    MatMenuModule,
+    MatButtonModule,
     NoopAnimationsModule,
     BrowserAnimationsModule,
     FormsModule,

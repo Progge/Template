@@ -2,7 +2,10 @@
 .example-icon{
   cursor: pointer;
 }
-
 mat-sidenav-container{
   height: 90vh;
+}
+.mat-button{
+  width: 100%;
+  text-align: left;
 }
