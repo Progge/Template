@@ -1,11 +1,26 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="login()" [formGroup]="loginForm">
   <mat-input-container>
-    <input matInput placeholder="Email" [(ngModel)]="email" name="email">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-error *ngIf="email.touched && email.hasError('required')">
+      Email krävs.
+    </mat-error>
+    <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('email')">
+      Felaktig email address.
+    </mat-error>
   </mat-input-container>
   <mat-input-container>
-    <input matInput placeholder="Lösenord" type="password" [(ngModel)]="password" name="password">
+    <input matInput placeholder="Lösenord" type="password" formControlName="password">
+    <mat-error *ngIf="password.touched && password.hasError('required')">
+      Lösenord krävs.
+    </mat-error>
   </mat-input-container>
   <div class="login-button-div">
-    <button mat-raised-button color="primary" id="email" class="login-button"> Logga in med Email</button>
+    <button
+      mat-raised-button
+      color="primary"
+      id="email"
+      class="login-button"
+      [disabled]="loginForm.invalid"
+    > Logga in med Email</button>
   </div>
 </form>
