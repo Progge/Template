@@ -2,3 +2,7 @@
 .example-icon{
   cursor: pointer;
 }
+
+mat-sidenav-container{
+  height: 90vh;
+}
