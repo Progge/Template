@@ -1,20 +1,37 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
   <mat-input-container>
-    <input matInput placeholder="Email" formControlName="email">
+    <input matInput placeholder="Email" formControlName="email" required>
+    <mat-error *ngIf="email.touched && email.hasError('required')">
+      Email address krävs.
+    </mat-error>
+    <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('email')">
+      Felaktig email address.
+    </mat-error>
   </mat-input-container>
-  <div formGroupName="passwords">
-    <mat-input-container>
-      <input matInput placeholder="Lösenord" type="password" formControlName="password">
-    </mat-input-container>
-    <mat-input-container>
-      <input matInput placeholder="Upprepa Lösenord" type="password" formControlName="repeat">
-    </mat-input-container>
-    <div *ngIf="repeat.dirty && passwords.errors && passwords.errors.passwordsDoNotMatch">
+  <mat-input-container>
+    <input matInput placeholder="Lösenord" type="password" formControlName="password" required>
+    <mat-error *ngIf="password.touched && password.hasError('required')">
+      Lösenord krävs.
+    </mat-error>
+    <mat-error *ngIf="password.touched && !password.hasError('required') && password.hasError('minlength')">
+      Lösenordet måste bestå av minst {{password.errors.minlength.requiredLength}} bokstäver.
+    </mat-error>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput placeholder="Upprepa Lösenord" type="password" formControlName="repeat" required>
+    <mat-error *ngIf="repeat.touched && repeat.hasError('required')">
+      Upprepning av lösenord krävs.
+    </mat-error>
+    <mat-hint style="color:red;" *ngIf="repeat.touched && signUpForm.errors && signUpForm.errors.passwordsDoNotMatch">
       Lösenorden skiljer sig.
-    </div>
-    <!--Submit-->
-    <div class="login-button-div">
-      <button mat-raised-button color="primary" id="email" class="login-button">Skapa Konto</button>
-    </div>
-  </div>
+    </mat-hint>
+  </mat-input-container>
+  <!--Submit-->
+  <button
+    mat-raised-button
+    color="primary"
+    id="email"
+    class="login-button"
+    [disabled]="signUpForm.invalid"
+  >Skapa Konto</button>
 </form>

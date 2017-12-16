@@ -10,37 +10,31 @@ import {PasswordValidators} from '../password/password.validators';
 export class SignupComponent {
   signUpForm = new FormGroup({
     email: new FormControl('',
-        Validators.required,
-      ),
-    passwords: new FormGroup({
-      password: new FormControl('',
-        Validators.required,
-      ),
-      repeat: new FormControl('',
-        Validators.required,
-      ),
-    }, PasswordValidators.passwordsDoNotMatch),
-  });
+      [Validators.required, Validators.email],
+    ),
+    password: new FormControl('',
+      [Validators.required, Validators.minLength(8)],
+    ),
+    repeat: new FormControl('',
+      [Validators.required],
+    ),
+  }, PasswordValidators.passwordsDoNotMatch);
 
   constructor() { }
 
   onSubmit() {
-    console.log('cådd');
+    console.log(this.email.value, this.password.value, this.repeat.value);
   }
 
   get email() {
     return this.signUpForm.get('email');
   }
 
-  get passwords() {
-    return this.signUpForm.get('passwords');
-  }
-
   get password() {
-    return this.passwords.get('password');
+    return this.signUpForm.get('password');
   }
 
   get repeat() {
-    return this.passwords.get('repeat');
+    return this.signUpForm.get('repeat');
   }
 }
