@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import { FirebaseModule } from './firebase/firebase.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {FormsModule} from '@angular/forms';
     NoopAnimationsModule,
     BrowserAnimationsModule,
     FormsModule,
+    FirebaseModule,
   ],
   declarations: [NavComponent, SpinnerComponent],
   exports: [NavComponent, SpinnerComponent]

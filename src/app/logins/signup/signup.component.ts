@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {PasswordValidators} from '../password/password.validators';
+import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,11 +21,7 @@ export class SignupComponent {
     ),
   }, PasswordValidators.passwordsDoNotMatch);
 
-  constructor() { }
-
-  onSubmit() {
-    console.log(this.email.value, this.password.value, this.repeat.value);
-  }
+  constructor(private firebaseAuthService: FirebaseAuthService) { }
 
   get email() {
     return this.signUpForm.get('email');
@@ -36,5 +33,9 @@ export class SignupComponent {
 
   get repeat() {
     return this.signUpForm.get('repeat');
+  }
+
+  signUp() {
+    this.firebaseAuthService.signUp(this.email.value, this.password.value);
   }
 }

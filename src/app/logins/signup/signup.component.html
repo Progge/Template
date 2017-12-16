@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+<form (ngSubmit)="signUp()" [formGroup]="signUpForm">
   <mat-input-container>
     <input matInput placeholder="Email" formControlName="email" required>
     <mat-error *ngIf="email.touched && email.hasError('required')">

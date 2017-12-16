@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-email',
@@ -16,7 +17,7 @@ export class EmailComponent implements OnInit {
     ),
   });
 
-  constructor() { }
+  constructor(private firebaseAuthService: FirebaseAuthService) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,7 @@ export class EmailComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
-    console.log(this.email.value, this.password.value);
+  login() {
+    this.firebaseAuthService.loginEmail(this.email.value, this.password.value);
   }
 }
