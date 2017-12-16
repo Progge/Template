@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-facebook',
   templateUrl: './facebook.component.html',
   styleUrls: ['./facebook.component.css']
 })
-export class FacebookComponent implements OnInit {
+export class FacebookComponent {
 
-  constructor() { }
+  constructor(private firebaseAuthService: FirebaseAuthService) { }
 
-  ngOnInit() {
+  login() {
+    this.firebaseAuthService.loginFacebook();
   }
-
 }

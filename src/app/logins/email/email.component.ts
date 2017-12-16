@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PasswordValidators } from '../password/password.validators';
+import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-email',
@@ -8,15 +8,29 @@ import { PasswordValidators } from '../password/password.validators';
   styleUrls: ['./email.component.css']
 })
 export class EmailComponent implements OnInit {
-  email: any;
-  password: any;
+  loginForm = new FormGroup({
+    email: new FormControl('',
+      [Validators.required, Validators.email],
+    ),
+    password: new FormControl('',
+      [Validators.required],
+    ),
+  });
 
-  constructor() { }
+  constructor(private firebaseAuthService: FirebaseAuthService) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.email, this.password);
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  login() {
+    this.firebaseAuthService.loginEmail(this.email.value, this.password.value);
   }
 }

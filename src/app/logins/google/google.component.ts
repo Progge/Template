@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseAuthService } from '../../core/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-google',
   templateUrl: './google.component.html',
   styleUrls: ['./google.component.css']
 })
-export class GoogleComponent implements OnInit {
+export class GoogleComponent {
 
-  constructor() { }
+  constructor(private firebaseAuth: FirebaseAuthService) { }
 
-  ngOnInit() {
+  login() {
+    this.firebaseAuth.loginGoogle();
   }
-
 }
