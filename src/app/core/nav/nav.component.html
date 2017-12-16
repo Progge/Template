@@ -1,15 +1,17 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Progge AB</span>
-      <span class="example-spacer"></span>
-      <mat-icon class="example-icon">favorite</mat-icon>
-      <mat-icon class="example-icon">delete</mat-icon>
       <mat-icon
+        id="sidenav-menu-icon"
         class="example-icon"
         (click)="start.toggle(undefined, 'mouse')"
       >
         menu
       </mat-icon>
+      <span>Progge AB</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="navbar-menu-tab">favorite</mat-icon>
+      <mat-icon class="navbar-menu-tab">delete</mat-icon>
+
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -17,18 +19,18 @@
 <mat-sidenav-container>
   <mat-sidenav #start (open)="myinput.focus()" [mode]="mode">
     <button mat-button>
-      <mat-icon class="example-icon">favorite</mat-icon>
-      <span>LIKE</span>
+      <mat-icon>favorite</mat-icon>
+      <span>Like</span>
     </button>
     <br>
     <button mat-button>
-      <mat-icon class="example-icon">delete</mat-icon>
-      <span>DELETE</span>
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
     </button>
     <br>
     <button mat-button (click)="start.close('mouse')">
-      <mat-icon class="example-icon">close</mat-icon>
-      <span>CLOSE</span>
+      <mat-icon>close</mat-icon>
+      <span>Close</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
