@@ -1,40 +1,81 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <mat-icon
-        id="sidenav-menu-icon"
-        class="example-icon"
-        (click)="start.toggle(undefined, 'mouse')"
-      >
-        menu
-      </mat-icon>
-      <span>Progge AB</span>
-      <span class="example-spacer"></span>
-      <mat-icon class="navbar-menu-tab">favorite</mat-icon>
-      <mat-icon class="navbar-menu-tab">delete</mat-icon>
+
+      <!--Logo-->
+      <button mat-button style="font-size: 25px;" routerLink="/">
+        <span style="vertical-align:middle;">
+          <mat-icon>developer_mode</mat-icon>
+        </span>
+        Progge AB
+      </button>
+
+      <!--Larger screen - Left-->
+      <div fxShow="false" fxShow.gt-sm>
+        <button mat-button routerLink="ads">
+          Annonser
+        </button>
+      </div>
+
+      <span class="fill-remaining-space"></span>
+
+      <!--Larger screen - Right-->
+      <div fxShow="false" fxShow.gt-sm>
+        <button
+          mat-button
+          *ngIf="!(firebaseAuthService.afAuth.authState | async)"
+          routerLink="login">
+          Logga in
+        </button>
+        <button
+          mat-button
+          *ngIf="(firebaseAuthService.afAuth.authState | async)"
+          (click)="firebaseAuthService.logout()">
+          Logga ut
+        </button>
+      </div>
+
+      <!--Smaller screen-->
+      <div fxHide="false" fxHide.gt-sm>
+        <button mat-icon-button >
+          <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+      </div>
 
     </mat-toolbar-row>
 </mat-toolbar>
 
 
 <mat-sidenav-container>
-  <mat-sidenav #start (open)="myinput.focus()" [mode]="mode">
-    <button mat-button>
-      <mat-icon>favorite</mat-icon>
-      <span>Like</span>
-    </button>
-    <br>
-    <button mat-button>
-      <mat-icon>delete</mat-icon>
-      <span>Delete</span>
-    </button>
-    <br>
-    <button mat-button (click)="start.close('mouse')">
-      <mat-icon>close</mat-icon>
-      <span>Close</span>
-    </button>
+
+  <!--Sidenav Content-->
+  <mat-sidenav #sidenav [mode]="'over'">
+      <button mat-button class="sidenav-button">
+        <mat-icon>favorite</mat-icon>
+        Like
+      </button>
+      <button mat-button class="sidenav-button">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+      <hr>
+      <button
+        mat-button
+        *ngIf="!(firebaseAuthService.afAuth.authState | async)"
+        routerLink="login">
+        Logga in
+      </button>
+      <button
+        mat-button
+        *ngIf="(firebaseAuthService.afAuth.authState | async)"
+        (click)="firebaseAuthService.logout()">
+        Logga ut
+      </button>
   </mat-sidenav>
+
+  <!--Page Content-->
   <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>
+
 </mat-sidenav-container>
 

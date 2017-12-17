@@ -1,25 +1,13 @@
-
-.example-icon{
-  cursor: pointer;
+mat-sidenav {
+  padding: 7.5px 7.5px 0 0;
 }
+
 mat-sidenav-container{
   height: 90vh;
 }
-.mat-button{
+
+.sidenav-button {
   width: 100%;
+  display:block;
   text-align: left;
-  font-size: x-large;
-}
-mat-sidenav{
-  width: 60vw;
-}
-@media only screen and (min-width: 376px) {
-  #sidenav-menu-icon {
-    display: none;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .navbar-menu-tab {
-    display: none;
-  }
 }
