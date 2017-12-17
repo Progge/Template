@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
+import { EMAIL_PATTERN} from '../../shared/shared.constants';
 
 @Component({
   selector: 'app-email',
@@ -10,7 +11,7 @@ import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.servic
 export class EmailComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl('',
-      [Validators.required, Validators.email],
+      [Validators.required, Validators.pattern(EMAIL_PATTERN)],
     ),
     password: new FormControl('',
       [Validators.required],

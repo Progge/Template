@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseAuthService} from '../firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  fillerContent = Array(30);
-  get mode() { return ['over']; }
-  constructor() { }
+  constructor(public firebaseAuthService: FirebaseAuthService) { }
 
   ngOnInit() {
   }

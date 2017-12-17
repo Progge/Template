@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {PasswordValidators} from '../password/password.validators';
 import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
+import { EMAIL_PATTERN } from '../../shared/shared.constants';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent {
+
+  @Output('signUpSuccess') signUpSuccess= new EventEmitter();
+
   signUpForm = new FormGroup({
     email: new FormControl('',
-      [Validators.required, Validators.email],
+      [Validators.required, Validators.pattern(EMAIL_PATTERN)],
     ),
     password: new FormControl('',
       [Validators.required, Validators.minLength(8)],
@@ -21,7 +26,7 @@ export class SignupComponent {
     ),
   }, PasswordValidators.passwordsDoNotMatch);
 
-  constructor(private firebaseAuthService: FirebaseAuthService) { }
+  constructor(private firebaseAuthService: FirebaseAuthService) {}
 
   get email() {
     return this.signUpForm.get('email');
@@ -37,5 +42,6 @@ export class SignupComponent {
 
   signUp() {
     this.firebaseAuthService.signUp(this.email.value, this.password.value);
+    this.signUpSuccess.emit({email: this.email.value, password: this.password.value});
   }
 }

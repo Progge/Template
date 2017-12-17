@@ -12,7 +12,7 @@ export class PasswordValidators {
     }
   }
 
-  static invalidOldPassword(control: AbstractControl): Promise<ValidationErrors | null> {
+  /*static invalidOldPassword(control: AbstractControl): Promise<ValidationErrors | null> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (control.value !== '1234') {
@@ -22,5 +22,5 @@ export class PasswordValidators {
         }
       }, 2000);
     });
-  }
+  }*/
 }
