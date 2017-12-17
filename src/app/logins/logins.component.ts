@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logins.component.css']
 })
 export class LoginsComponent {
-  selectedTab = 1;
+  selectedTab = 0;
   constructor() { }
 
   swapTab(signUpSuccess) {
