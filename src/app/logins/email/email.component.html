@@ -4,7 +4,7 @@
     <mat-error *ngIf="email.touched && email.hasError('required')">
       Email krävs.
     </mat-error>
-    <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('email')">
+    <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('pattern')">
       Felaktig email address.
     </mat-error>
   </mat-input-container>

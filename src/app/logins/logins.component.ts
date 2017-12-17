@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './logins.component.html',
   styleUrls: ['./logins.component.css']
 })
-export class LoginsComponent implements OnInit {
-
+export class LoginsComponent {
+  selectedTab = 0;
   constructor() { }
 
-  ngOnInit() {
+  swapTab(signUpSuccess) {
+    if (signUpSuccess) {
+      this.selectedTab = 0;
+    }
   }
-
 }
