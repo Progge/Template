@@ -1,8 +1,8 @@
 export class Hero {
 
-  public  id: number;
+  public id: any;
   public name: string;
-  public description: string;
+  public age: number;
 
   constructor() {}
 }

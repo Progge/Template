@@ -7,3 +7,11 @@
  Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+
+.error-snackbar {
+  background-color: #CC0000!important;
+}
+
+.success-snackbar {
+  background-color: #43a047!important;
+}

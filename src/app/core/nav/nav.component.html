@@ -11,11 +11,18 @@
 
       <!--Larger screen - Left-->
       <div fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="ads">
-          Annonser
+        <button mat-button routerLink="heroes">
+          Hjältar
         </button>
       </div>
 
+      <div fxShow="false" fxShow.gt-sm>
+        <button mat-button routerLink="about-us">
+          Om oss
+        </button>
+      </div>
+
+      <!--Fill remaining space-->
       <span class="fill-remaining-space"></span>
 
       <!--Larger screen - Right-->
@@ -59,7 +66,7 @@
       </button>
       <hr>
       <button
-        mat-button
+        mat-button class="sidenav-button"
         *ngIf="!(firebaseAuthService.afAuth.authState | async)"
         routerLink="login">
         Logga in

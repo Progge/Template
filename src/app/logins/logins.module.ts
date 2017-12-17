@@ -12,6 +12,7 @@ import { GoogleComponent } from './google/google.component';
 import { EmailComponent } from './email/email.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
     MatInputModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
+    SharedModule,
   ],
   declarations: [
     LoginsComponent,

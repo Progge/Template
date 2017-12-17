@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }
