@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {PasswordValidators} from '../password/password.validators';
 import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
@@ -9,6 +9,8 @@ import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.servic
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+  @Output('signUpSuccess') signUpSuccess= new EventEmitter();
+
   signUpForm = new FormGroup({
     email: new FormControl('',
       [Validators.required, Validators.email],
@@ -37,5 +39,6 @@ export class SignupComponent {
 
   signUp() {
     this.firebaseAuthService.signUp(this.email.value, this.password.value);
+    this.signUpSuccess.emit({email: this.email.value, password: this.password.value});
   }
 }
