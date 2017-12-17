@@ -14,6 +14,12 @@ export abstract class FirebaseDatabaseService<ItemClass> {
 
   abstract readonly COLLECTION_NAME: string;
 
+  private itemsCollection: AngularFirestoreCollection<ItemClass>;
+  private items: Observable<ItemClass[]>;
+
+  private itemDocument: AngularFirestoreDocument<ItemClass>;
+  private item: Observable<ItemClass>;
+
   constructor(private afStore: AngularFirestore) {}
 
   getItem (id: string): Observable<ItemClass> {
