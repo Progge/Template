@@ -16,6 +16,12 @@
         </button>
       </div>
 
+      <div fxShow="false" fxShow.gt-sm>
+        <button mat-button routerLink="about-us">
+          Om oss
+        </button>
+      </div>
+
       <span class="fill-remaining-space"></span>
 
       <!--Larger screen - Right-->
@@ -49,13 +55,13 @@
 
   <!--Sidenav Content-->
   <mat-sidenav #sidenav [mode]="'over'">
-      <button mat-button class="sidenav-button">
-        <mat-icon>favorite</mat-icon>
-        Like
+      <button mat-button class="sidenav-button" routerLink="ads">
+        <mat-icon>dns</mat-icon>
+        Annonser
       </button>
-      <button mat-button class="sidenav-button">
-        <mat-icon>delete</mat-icon>
-        Delete
+      <button mat-button class="sidenav-button" routerLink="about-us">
+        <mat-icon>people</mat-icon>
+        Om oss
       </button>
       <hr>
       <button
