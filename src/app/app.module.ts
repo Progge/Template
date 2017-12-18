@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { LoginsModule } from './logins/logins.module';
+import { AdsModule } from './ads/ads.module';
 
 
 
@@ -19,6 +20,7 @@ import { LoginsModule } from './logins/logins.module';
     CoreModule,
     HeroesModule,
     LoginsModule,
+    AdsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
