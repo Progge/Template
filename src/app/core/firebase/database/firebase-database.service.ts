@@ -24,7 +24,7 @@ export abstract class FirebaseDatabaseService<ItemClass> extends FirestoreServic
     super.doc$(this.COLLECTION_PATH + '/' + id).delete();
   }
 
-  getItems (queryFn?: QueryFn, search?: string): Observable<ItemClass[]> {
+  getItems (queryFn?: QueryFn): Observable<ItemClass[]> {
     return super.colWithIds$(this.COLLECTION_PATH, queryFn);
   }
 }
