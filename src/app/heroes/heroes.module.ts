@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { HeroesComponent } from './heroes.component';
@@ -10,6 +11,7 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     HeroesRoutingModule
   ],
   declarations: [
