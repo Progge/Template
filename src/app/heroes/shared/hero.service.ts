@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class HeroService extends FirebaseDatabaseService<Hero> {
-  COLLECTION_NAME = 'heroes';
+  COLLECTION_PATH = 'heroes';
 
   getHeroes(): Observable<Hero[]> {
     return super.getItems();
