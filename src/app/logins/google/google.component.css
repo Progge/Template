@@ -1,5 +1,6 @@
 #google{
-  background: #ea4335 url('../../../assets/svg/google.svg') no-repeat 10px;
-  background-size: 25px;
+  background: #4285F4 url('../../../assets/svg/btn_google_light_normal_ios.svg') no-repeat 0px;
+  background-size: 50px;
   margin-top:15px;
+  margin-left: -2px;
 }
