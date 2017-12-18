@@ -16,6 +16,10 @@ export abstract class FirebaseDatabaseService<ItemClass> extends FirestoreServic
     return super.doc$(this.COLLECTION_PATH + '/' + id).valueChanges();
   }
 
+  addItem (item: ItemClass): void {
+    super.col$(this.COLLECTION_PATH).add(item);
+  }
+
   updateItem (id: string, new_data: any): void {
     super.doc$(this.COLLECTION_PATH + '/' + id).update(new_data);
   }
