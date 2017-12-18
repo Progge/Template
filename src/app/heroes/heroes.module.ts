@@ -7,6 +7,7 @@ import { HeroesComponent } from './heroes.component';
 import { HeroService } from './shared/hero.service';
 import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
+import { AddHeroComponent } from './add-hero/add-hero.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HeroListComponent } from './hero-list/hero-list.component';
   declarations: [
     HeroesComponent,
     HeroComponent,
-    HeroListComponent
+    HeroListComponent,
+    AddHeroComponent
   ],
   providers: [
     HeroService
