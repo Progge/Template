@@ -15,3 +15,7 @@
 .success-snackbar {
   background-color: #43a047!important;
 }
+
+body {
+  margin: 0;
+}
