@@ -28,7 +28,7 @@ import {environment} from '../../environments/environment';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule
   ],
