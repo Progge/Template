@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    <h2>Heroes Form</h2>
+    <mat-form-field>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input class="remove-spinner" matInput placeholder="Age" type="number">
+    </mat-form-field>
+    <agm-map class="agm-map" [latitude]="lat" [longitude]="lng">
+      <agm-marker (dragEnd)="markerMoved($event)" [markerDraggable]="true" [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </mat-card-content>
+</mat-card>
+

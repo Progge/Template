@@ -15,3 +15,12 @@
 .success-snackbar {
   background-color: #43a047!important;
 }
+
+/*Remove spinners from number input fields */
+input.remove-spinner::-webkit-outer-spin-button,
+input.remove-spinner::-webkit-inner-spin-button {
+  display: none;
+}
+input.remove-spinner{
+  -moz-appearance:textfield;
+}
