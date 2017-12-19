@@ -1,7 +1,5 @@
-<div *ngIf="progresses" class="progress" style="width:400px">
-  <div *ngFor="let progress of progresses">
-    {{ progress }}%
-  </div>
+<div *ngIf="uploading" class="progress" style="width:400px">
+    {{ progress.percentage }}%
 </div>
 
 <input type="file" (change)="selectFile($event)">
