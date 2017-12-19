@@ -8,11 +8,13 @@ import { HeroService } from './shared/hero.service';
 import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
+import {MatButtonModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
+    MatButtonModule,
     HeroesRoutingModule
   ],
   declarations: [

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {AboutUsComponent} from './about-us.component';
-import {AboutUsService} from './about-us.service';
+import {AboutUsService} from './shared/about-us.service';
 
 
 @NgModule({
