@@ -23,6 +23,6 @@ export class AddHeroComponent {
   upload() {
     const file = this.selectedFiles.item(0);
     this.uploading = true;
-    this.uploadService.pushFileToStorage(file, file.name, this.progress);
+    console.log(this.uploadService.pushFileToStorage(file, file.name, this.progress));
   }
 }

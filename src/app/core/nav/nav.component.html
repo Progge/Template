@@ -1,83 +1,35 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
+<!-- Navbar -->
+<mat-toolbar #toolbar color="primary">
+  <mat-toolbar-row>
 
-      <!--Logo-->
-      <button mat-button style="font-size: 25px;" routerLink="/">
+    <!--Logo-->
+    <button mat-button style="font-size: 25px;" routerLink="/">
         <span style="vertical-align:middle;">
           <mat-icon>developer_mode</mat-icon>
         </span>
-        Progge AB
+      Progge AB
+    </button>
+
+    <!--Larger screen - Left-->
+    <div fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="heroes">
+        Hjältar
       </button>
-
-      <!--Larger screen - Left-->
-      <div fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="heroes">
-          Hjältar
-        </button>
-      </div>
-      <div fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="ads">
-          Ads
-        </button>
-      </div>
-
-      <div fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="add-hero">
-          Ladda Upp Fil
-        </button>
-      </div>
-
-      <div fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="about-us">
-          Om oss
-        </button>
-      </div>
-
-      <!--Fill remaining space-->
-      <span class="fill-remaining-space"></span>
-
-      <!--Larger screen - Right-->
-      <div fxShow="false" fxShow.gt-sm>
-        <button
-          mat-button
-          *ngIf="!(firebaseAuthService.afAuth.authState | async)"
-          routerLink="login">
-          Logga in
-        </button>
-        <button
-          mat-button
-          *ngIf="(firebaseAuthService.afAuth.authState | async)"
-          (click)="firebaseAuthService.logout()">
-          Logga ut
-        </button>
-      </div>
-
-      <!--Smaller screen-->
-      <div fxHide="false" fxHide.gt-sm>
-        <button mat-icon-button >
-          <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-        </button>
-      </div>
-
-    </mat-toolbar-row>
-</mat-toolbar>
-
-
-<mat-sidenav-container>
-
-  <!--Sidenav Content-->
-  <mat-sidenav #sidenav [mode]="'over'">
-      <button mat-button class="sidenav-button">
-        <mat-icon>favorite</mat-icon>
-        Like
+      <button mat-button routerLink="add-hero">
+        Ladda Upp Fil
       </button>
-      <button mat-button class="sidenav-button">
-        <mat-icon>delete</mat-icon>
-        Delete
+      <button mat-button routerLink="about-us">
+        Om oss
       </button>
-      <hr>
+    </div>
+
+    <!--Fill remaining space-->
+    <span class="fill-remaining-space"></span>
+
+    <!--Larger screen - Right-->
+    <div fxShow="false" fxShow.gt-sm>
       <button
-        mat-button class="sidenav-button"
+        mat-button
         *ngIf="!(firebaseAuthService.afAuth.authState | async)"
         routerLink="login">
         Logga in
@@ -88,10 +40,40 @@
         (click)="firebaseAuthService.logout()">
         Logga ut
       </button>
+    </div>
+
+    <!--Smaller screen-->
+    <div fxHide="false" fxHide.gt-sm>
+      <button mat-icon-button >
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container fullscreen>
+
+  <!--Sidenav Content-->
+  <mat-sidenav #sidenav [mode]="'push'">
+    <button
+      mat-button class="sidenav-button"
+      *ngIf="!(firebaseAuthService.afAuth.authState | async)"
+      routerLink="login">
+      Logga in
+    </button>
+    <button
+      mat-button
+      *ngIf="(firebaseAuthService.afAuth.authState | async)"
+      (click)="firebaseAuthService.logout()">
+      Logga ut
+    </button>
   </mat-sidenav>
+  <mat-sidenav-content>
 
-  <!--Page Content-->
-  <ng-content></ng-content>
+    <!-- Page Content -->
+    <ng-content></ng-content>
 
+  </mat-sidenav-content>
 </mat-sidenav-container>
 

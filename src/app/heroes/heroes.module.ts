@@ -10,15 +10,15 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
-
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     HeroesRoutingModule,
     MatCardModule,
+    MatIconModule,
     MatButtonModule,
-    MatIconModule
+    HeroesRoutingModule
   ],
   declarations: [
     HeroesComponent,
