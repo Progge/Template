@@ -2,10 +2,6 @@ mat-sidenav {
   padding: 7.5px 7.5px 0 0;
 }
 
-mat-sidenav-container{
-  height: 90vh;
-}
-
 .sidenav-button {
   width: 100%;
   display:block;

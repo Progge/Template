@@ -9,7 +9,7 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
-import {MatButtonModule, MatCardModule} from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
     FlexLayoutModule,
     HeroesRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [
     HeroesComponent,
