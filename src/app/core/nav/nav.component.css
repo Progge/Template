@@ -1,6 +1,6 @@
 
 mat-sidenav {
-  padding: 7.5px 7.5px 0 0;
+  /*padding: 7.5px 7.5px 0 0!important;*/
 }
 
 .sidenav-button {
@@ -15,4 +15,15 @@ mat-toolbar-row {
 
 mat-sidenav-container {
   top: 60px!important;
+}
+
+mat-sidenav>button {
+  font-size: 18px;
+  color: #333;
+  padding: 10px 50px 10px 10px;
+  border-bottom: solid 1px gray;
+  border-radius: 0%;
+  width: 100%;
+  display:block;
+  text-align: left;
 }

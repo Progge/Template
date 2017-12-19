@@ -55,9 +55,18 @@
 <mat-sidenav-container fullscreen>
 
   <!--Sidenav Content-->
-  <mat-sidenav #sidenav [mode]="'push'">
+  <mat-sidenav #sidenav [mode]="'push'" style="float: left;">
+    <button mat-button routerLink="heroes">
+      Heroes
+    </button>
+    <button mat-button routerLink="add-hero">
+      Upload File
+    </button>
+    <button mat-button routerLink="about-us">
+      About Us
+    </button>
     <button
-      mat-button class="sidenav-button"
+      mat-button
       *ngIf="!(firebaseAuthService.afAuth.authState | async)"
       routerLink="login">
       Login
