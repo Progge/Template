@@ -1,5 +1,7 @@
 <div fxLayout fxLayout.xs="column" fxLayoutWrap="wrap">
   <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" *ngFor="let hero of (heroes | async)">
     {{ hero | json }}
+    <app-hero-card [hero]="hero"></app-hero-card>
+
   </div>
 </div>

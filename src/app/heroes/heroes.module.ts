@@ -8,18 +8,23 @@ import { HeroService } from './shared/hero.service';
 import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
+import { HeroCardComponent } from './hero-card/hero-card.component';
+import {MatButtonModule, MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
+    MatCardModule,
+    MatButtonModule
   ],
   declarations: [
     HeroesComponent,
     HeroComponent,
     HeroListComponent,
-    AddHeroComponent
+    AddHeroComponent,
+    HeroCardComponent
   ],
   providers: [
     HeroService
