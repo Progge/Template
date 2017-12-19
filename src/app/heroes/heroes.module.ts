@@ -9,23 +9,36 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
-import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
+  MatSlideToggleModule
+} from '@angular/material';
+import { HeroFormComponent } from './hero-form/hero-form.component';
+import {AgmCoreModule} from '@agm/core';
+import {environment} from '../../environments/environment';
+
 @NgModule({
   imports: [
     CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsApiKey
+    }),
     FlexLayoutModule,
     HeroesRoutingModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
     HeroesRoutingModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
     HeroesComponent,
     HeroComponent,
     HeroListComponent,
     AddHeroComponent,
-    HeroCardComponent
+    HeroCardComponent,
+    HeroFormComponent
   ],
   providers: [
     HeroService

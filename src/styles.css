@@ -19,3 +19,12 @@
 body {
   margin: 0;
 }
+
+/*Remove spinners from number input fields */
+input.remove-spinner::-webkit-outer-spin-button,
+input.remove-spinner::-webkit-inner-spin-button {
+  display: none;
+}
+input.remove-spinner{
+  -moz-appearance:textfield;
+}
