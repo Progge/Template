@@ -1,3 +1,4 @@
+
 mat-sidenav {
   padding: 7.5px 7.5px 0 0;
 }
@@ -6,4 +7,12 @@ mat-sidenav {
   width: 100%;
   display:block;
   text-align: left;
+}
+
+mat-toolbar-row {
+  height: 60px;
+}
+
+mat-sidenav-container {
+  top: 60px!important;
 }

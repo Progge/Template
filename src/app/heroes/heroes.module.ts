@@ -26,8 +26,9 @@ import {environment} from '../../environments/environment';
     FlexLayoutModule,
     HeroesRoutingModule,
     MatCardModule,
-    MatButtonModule,
     MatIconModule,
+    MatButtonModule,
+    HeroesRoutingModule
     MatFormFieldModule,
     MatInputModule
   ],
