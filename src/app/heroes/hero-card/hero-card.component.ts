@@ -8,8 +8,7 @@ import {Hero} from '../shared/hero.model';
 })
 export class HeroCardComponent implements OnInit {
 
-  @Input()
-  hero: Hero;
+  @Input() hero: Hero;
 
   constructor() { }
 

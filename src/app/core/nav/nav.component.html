@@ -13,13 +13,13 @@
     <!--Larger screen - Left-->
     <div fxShow="false" fxShow.gt-sm>
       <button mat-button routerLink="heroes">
-        Hjältar
+        Heroes
       </button>
       <button mat-button routerLink="add-hero">
-        Ladda Upp Fil
+        Upload File
       </button>
       <button mat-button routerLink="about-us">
-        Om oss
+        About Us
       </button>
     </div>
 
@@ -32,13 +32,13 @@
         mat-button
         *ngIf="!(firebaseAuthService.afAuth.authState | async)"
         routerLink="login">
-        Logga in
+        Login
       </button>
       <button
         mat-button
         *ngIf="(firebaseAuthService.afAuth.authState | async)"
         (click)="firebaseAuthService.logout()">
-        Logga ut
+        Logout
       </button>
     </div>
 
@@ -60,13 +60,13 @@
       mat-button class="sidenav-button"
       *ngIf="!(firebaseAuthService.afAuth.authState | async)"
       routerLink="login">
-      Logga in
+      Login
     </button>
     <button
       mat-button
       *ngIf="(firebaseAuthService.afAuth.authState | async)"
       (click)="firebaseAuthService.logout()">
-      Logga ut
+      Logout
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
