@@ -10,12 +10,14 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { AddHeroComponent } from './add-hero/add-hero.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatRadioModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
+  MatRadioModule, MatSliderModule,
   MatSlideToggleModule
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import {AgmCoreModule} from '@agm/core';
 import {environment} from '../../environments/environment';
+import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import {environment} from '../../environments/environment';
     MatButtonModule,
     HeroesRoutingModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressBarModule,
   ],
   declarations: [
     HeroesComponent,
@@ -38,7 +41,8 @@ import {environment} from '../../environments/environment';
     HeroListComponent,
     AddHeroComponent,
     HeroCardComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    UploadHeroesComponent
   ],
   providers: [
     HeroService

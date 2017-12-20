@@ -1,0 +1,18 @@
+<div id="upload-div">
+  <mat-card>
+    <button mat-raised-button color="accent" type="button" onclick="document.getElementById('image').click()">
+      Select Heroes
+    </button>
+    <input id="image" type="file" multiple name="image" style="display:none;" accept="image/*" (change)="selectFiles($event)">
+
+    <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+    <div *ngFor="let progress of progresses" style="margin-top: 10px;">
+      <span>{{progress.name}}</span>
+      <mat-progress-bar
+        color="primary"
+        style="width:100%; margin-top: 5px;"
+        [value]="progress.percentage">
+      </mat-progress-bar>
+    </div>
+  </mat-card>
+</div>
