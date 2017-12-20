@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
-import {Upload} from '../../core/firebase/storage/upload.model';
-import {HeroService} from '../shared/hero.service';
 
 @Component({
   selector: 'app-upload-heroes',
