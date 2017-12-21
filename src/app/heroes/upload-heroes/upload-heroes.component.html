@@ -1,9 +1,9 @@
 <div id="upload-div">
   <mat-card>
-    <button mat-raised-button color="accent" type="button" onclick="document.getElementById('image').click()">
+    <button mat-raised-button color="accent" onclick="document.getElementById('image').click()">
       Select Heroes
+      <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
     </button>
-    <input id="image" type="file" multiple name="image" style="display:none;" accept="image/*" (change)="selectFiles($event)">
 
     <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
     <div *ngFor="let progress of progresses" style="margin-top: 10px;">

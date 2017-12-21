@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HeroesComponent} from './heroes.component';
-import {AddHeroComponent} from './add-hero/add-hero.component';
-import {HeroFormComponent} from './hero-form/hero-form.component';
-import {UploadHeroesComponent} from './upload-heroes/upload-heroes.component';
+import { HeroesComponent } from './heroes.component';
+import { HeroFormComponent } from './hero-form/hero-form.component';
+import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },

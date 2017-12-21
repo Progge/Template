@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { LoginsModule } from './logins/logins.module';
 import { AboutUsModule } from './about-us/about-us.module';
+import {ProfileModule} from './profile/profile.module';
 
 
 
@@ -20,7 +21,8 @@ import { AboutUsModule } from './about-us/about-us.module';
     CoreModule,
     HeroesModule,
     LoginsModule,
-    AboutUsModule
+    AboutUsModule,
+    ProfileModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,8 +23,7 @@ export class UploadHeroesComponent {
   }
 
   upload() {
-    const files = this.selectedFiles;
-    Array.prototype.forEach.call(files, (file, index) => {
+    Array.prototype.forEach.call(this.selectedFiles, (file, index) => {
       const upload = this.uploadService.pushFileToStorage(file, file.name, this.progresses[index]);
       console.log(upload);
     });
