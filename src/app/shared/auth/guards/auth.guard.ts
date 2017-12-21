@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth.service';
+import {SnackBarService} from '../../feedback/snackbar.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -9,6 +10,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private router: Router,
+    private snackBarService: SnackBarService,
   ) { }
 
   canActivate(
@@ -18,6 +20,7 @@ export class AuthGuard implements CanActivate {
     // if not logged in
     if (!this.auth.isLoggedIn) {
       this.router.navigate(['login']);
+      this.snackBarService.showSnackBar('error', 'auth');
       return false;
     }
 

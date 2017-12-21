@@ -42,7 +42,7 @@ export class SnackBarService {
         this.message = 'Your account has been successfully created.';
         break;
       case ('auth'):
-        this.message = 'You need to be logged in to access that page.';
+        this.message = 'You have to be logged in to access that page.';
         break;
     }
   }
