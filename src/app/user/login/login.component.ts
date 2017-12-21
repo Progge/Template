@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-logins',
-  templateUrl: './logins.component.html',
-  styleUrls: ['./logins.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginsComponent {
+export class LoginComponent {
   selectedTab = 0;
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
+import {LoginService} from '../shared/login.service';
 
 @Component({
   selector: 'app-facebook',
@@ -8,9 +8,9 @@ import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.servic
 })
 export class FacebookComponent {
 
-  constructor(private firebaseAuthService: FirebaseAuthService) { }
+  constructor(private loginService: LoginService) { }
 
   login() {
-    this.firebaseAuthService.loginFacebook();
+    this.loginService.loginFacebook();
   }
 }

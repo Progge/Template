@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfileComponent } from './profile.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AuthGuard } from '../shared/auth/guards/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
+    component: UserComponent,
     children: [
       {
         path: 'profile',
-        component: ProfilePageComponent,
+        component: ProfileComponent,
         canActivate: [AuthGuard],
       }
     ]
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProfileRoutingModule { }
+export class UserRoutingModule { }
