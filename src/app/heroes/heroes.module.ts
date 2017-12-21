@@ -41,7 +41,7 @@ import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
     UploadHeroesComponent
   ],
   providers: [
-    HeroService
+    HeroService,
   ]
 })
 export class HeroesModule { }
