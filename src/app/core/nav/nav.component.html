@@ -37,6 +37,12 @@
       <button
         mat-button
         *ngIf="(firebaseAuthService.afAuth.authState | async)"
+        routerLink="profile">
+        Profile
+      </button>
+      <button
+        mat-button
+        *ngIf="(firebaseAuthService.afAuth.authState | async)"
         (click)="firebaseAuthService.logout()">
         Logout
       </button>
@@ -70,6 +76,12 @@
       *ngIf="!(firebaseAuthService.afAuth.authState | async)"
       routerLink="login">
       Login
+    </button>
+    <button
+      mat-button
+      *ngIf="(firebaseAuthService.afAuth.authState | async)"
+      routerLink="profile">
+      Profile
     </button>
     <button
       mat-button
