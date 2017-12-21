@@ -12,5 +12,6 @@ export const environment = {
     projectId: 'progge-ab',
     storageBucket: 'progge-ab.appspot.com',
     messagingSenderId: '1013250598786'
-  }
-};
+  },
+  googleMapsApiKey: 'AIzaSyAlak1M86TXWOeI0Wlfv5IOD2xUcukXgsw'
+}
