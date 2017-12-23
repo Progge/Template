@@ -33,16 +33,16 @@ export class SnackBarService {
         this.message = message;
         break;
       case ('login'):
-        this.message = 'You have been logged in.';
+        this.message = 'You have successfully signed in.';
         break;
       case ('logout'):
-        this.message = 'You have been logged out.';
+        this.message = 'You have been successfully signed out.';
         break;
       case ('sign-up'):
-        this.message = 'Your account has been successfully created.';
+        this.message = 'Your account has been successfully registered.';
         break;
       case ('auth'):
-        this.message = 'You have to be logged in to access that page.';
+        this.message = 'You have to sign in to access that page.';
         break;
     }
   }

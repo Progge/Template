@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,12 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  selectedTab = 0;
-  constructor() { }
 
-  swapTab(signUpSuccess) {
-    if (signUpSuccess) {
-      this.selectedTab = 0;
-    }
-  }
+  constructor() { }
 }

@@ -1,13 +1,13 @@
 <div id="login-div">
   <mat-card>
     <mat-tab-group [(selectedIndex)]="selectedTab">
-      <mat-tab label="Login" class="tab">
+      <mat-tab label="Sign In" class="tab">
         <app-email></app-email>
         <app-facebook></app-facebook>
         <app-google></app-google>
       </mat-tab>
       <mat-tab label="Create Account" class="tab">
-        <app-signup (signUpSuccess)="swapTab($event)"></app-signup>
+        <app-signup></app-signup>
       </mat-tab>
     </mat-tab-group>
   </mat-card>

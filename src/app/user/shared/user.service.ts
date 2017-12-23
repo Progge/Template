@@ -1,4 +1,4 @@
-import {Injectable, Provider} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {FirebaseDatabaseService} from '../../core/firebase/database/firebase-database.service';
 import { User } from './user.model';
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +17,7 @@ export class UserService {
     private snackBarService: SnackBarService,
     private auth: FirebaseAuthService,
   ) {
+    this.setUser();
   }
 
   loginEmail(email: string, password: string) {
@@ -24,6 +25,7 @@ export class UserService {
       .then((success) => {
         console.log(success);
         this.setUser();
+        this.snackBarService.showSnackBar('success', 'login');
       }).catch((error) => {
         console.log(error);
       });
@@ -35,6 +37,7 @@ export class UserService {
         console.log(credential);
         this.updateUser(credential.user);
         this.setUser();
+        this.snackBarService.showSnackBar('success', 'login');
       });
   }
 
@@ -44,6 +47,7 @@ export class UserService {
         this.updateUser(credential.user);
         this.setUser();
       });
+    this.snackBarService.showSnackBar('success', 'login');
   }
 
   signUp(phone: string, email: string, password: string, repeat: string) {
@@ -55,6 +59,7 @@ export class UserService {
           phoneNumber: phone,
         });
         this.setUser();
+        this.snackBarService.showSnackBar('success', 'sign-up');
       });
   }
 
@@ -81,8 +86,9 @@ export class UserService {
       .switchMap(user => {
         if (user) {
           return this.db.getItem(this.PATH, user.uid);
+        } else {
+          return Observable.of(null);
         }
-        return Observable.of(null);
       });
   }
 }
