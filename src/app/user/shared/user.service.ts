@@ -80,8 +80,5 @@ export class UserService {
         }
         return Observable.of(null);
       });
-    this.user.subscribe(user => {
-      console.log('Current user: ' + user.uid);
-    });
   }
 }
