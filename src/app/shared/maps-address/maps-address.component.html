@@ -1,0 +1,11 @@
+<mat-input-container class="maxWidth">
+  <input matInput [value]="formattedAddress" name="search" type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+</mat-input-container>
+<agm-map [zoom]="15" class="agm-map" [latitude]="lat" [longitude]="lng">
+  <agm-marker (dragEnd)="markerMoved($event)" [markerDraggable]="true" [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<mat-list *ngIf="addressObs|async">
+  <mat-list-item>
+    {{formattedAddress}}
+  </mat-list-item>
+</mat-list>

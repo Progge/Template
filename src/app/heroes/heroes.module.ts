@@ -18,16 +18,13 @@ import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
 import {HeroFormService} from './hero-form/hero-form.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey,
-      libraries: ['places']
-    }),
     FlexLayoutModule,
     HeroesRoutingModule,
     MatListModule,
@@ -38,6 +35,7 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    SharedModule
   ],
   declarations: [
     HeroesComponent,
