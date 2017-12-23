@@ -2,16 +2,16 @@
   <mat-input-container>
     <input matInput placeholder="Email" formControlName="email">
     <mat-error *ngIf="email.touched && email.hasError('required')">
-      Email krävs.
+      Email is required.
     </mat-error>
     <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('pattern')">
-      Felaktig email address.
+      Incorrect email address.
     </mat-error>
   </mat-input-container>
   <mat-input-container>
-    <input matInput placeholder="Lösenord" type="password" formControlName="password">
+    <input matInput placeholder="Password" type="password" formControlName="password">
     <mat-error *ngIf="password.touched && password.hasError('required')">
-      Lösenord krävs.
+      Password is required.
     </mat-error>
   </mat-input-container>
   <div class="login-button-div">
@@ -21,6 +21,6 @@
       id="email"
       class="login-button"
       [disabled]="loginForm.invalid"
-    > Logga in med Email</button>
+    > Sign in with Email</button>
   </div>
 </form>

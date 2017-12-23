@@ -13,8 +13,6 @@ import { GoogleComponent } from './google/google.component';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 
-import { LoginService } from './shared/login.service';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,8 +35,5 @@ import { LoginService } from './shared/login.service';
     EmailComponent,
     SignupComponent,
   ],
-  providers: [
-    LoginService,
-  ]
 })
 export class LoginModule { }

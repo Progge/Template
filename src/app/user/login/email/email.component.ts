@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EMAIL_PATTERN } from '../../../shared/shared.constants';
-import {LoginService } from '../shared/login.service';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-email',
@@ -18,7 +18,7 @@ export class EmailComponent implements OnInit {
     ),
   });
 
-  constructor(private loginService: LoginService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -32,6 +32,6 @@ export class EmailComponent implements OnInit {
   }
 
   login() {
-    this.loginService.loginEmail(this.email.value, this.password.value);
+    this.userService.loginEmail(this.email.value, this.password.value);
   }
 }
