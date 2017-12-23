@@ -25,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey
+      apiKey: environment.googleMapsApiKey,
+      libraries: ['places']
     }),
     FlexLayoutModule,
     HeroesRoutingModule,

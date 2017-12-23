@@ -14,11 +14,12 @@
       </agm-map>
       <mat-list *ngIf="addressObs|async; else loading">
         <mat-list-item>
-          {{(addressObs | async)?.results[0]?.formatted_address}}
+          {{address}}
         </mat-list-item>
       </mat-list>
-      <mat-input-container>
-        <input matInput [(ngModel)]="address" name="address">
+      <mat-input-container class="maxWidth">
+        <input matInput [(ngModel)]="address" name="search" type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+        <!--<input matInput [(ngModel)]="address" name="address">-->
       </mat-input-container>
       <ng-template #loading>Loading</ng-template>
     </form>

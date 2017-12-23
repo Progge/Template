@@ -2,3 +2,6 @@
   height: 300px;
   width: 400px;
 }
+.maxWidth {
+  width: 100%;
+}
