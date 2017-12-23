@@ -20,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {ImageCropperModule} from 'ng2-img-cropper';
+import {FileDropModule} from 'angular2-file-drop';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import {ImageCropperModule} from 'ng2-img-cropper';
     HttpClientModule,
     FormsModule,
     FlexLayoutModule,
+    FileDropModule,
     HeroesRoutingModule,
     ImageCropperModule,
     MatListModule,

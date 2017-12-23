@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import {HeroFormService} from './hero-form.service';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
@@ -16,6 +16,12 @@ export class HeroFormComponent implements OnInit {
   data: any;
   cropperSettings: CropperSettings;
   model: Hero= new Hero();
+  public fileIsOver = false;
+
+  @Output() public options = {
+    readAs: 'DataURL'
+  };
+
   constructor(private uploadService: FirebaseStorageService) {
 
     this.cropperSettings = new CropperSettings();
@@ -26,6 +32,8 @@ export class HeroFormComponent implements OnInit {
     this.cropperSettings.canvasWidth = 400;
     this.cropperSettings.canvasHeight = 300;
     this.cropperSettings.cropOnResize = true;
+    this.cropperSettings.noFileInput = true;
+
 
     this.data = {};
 
@@ -34,9 +42,19 @@ export class HeroFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public fileOver(fileIsOver: boolean): void {
+    this.fileIsOver = fileIsOver;
+  }
+
+  public onFileDrop(file: File): void {
+    console.log(file);
+    this.data = file;
+  }
+
   onSubmit() {
     console.log(this.data);
-    const upload = this.uploadService.pushFileToStorage(this.data.image, 'pick', 100);
+    const upload = this.uploadService.pushBase64ImageToStorage(this.data.image, 'pick');
     console.log(upload);
   }
 }
