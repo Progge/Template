@@ -30,20 +30,20 @@
     <div fxShow="false" fxShow.gt-sm>
       <button
         mat-button
-        *ngIf="!(firebaseAuthService.afAuth.authState | async)"
+        *ngIf="!(authService.isLoggedIn)"
         routerLink="login">
         Login
       </button>
       <button
         mat-button
-        *ngIf="(firebaseAuthService.afAuth.authState | async)"
+        *ngIf="(authService.isLoggedIn)"
         routerLink="profile">
         Profile
       </button>
       <button
         mat-button
-        *ngIf="(firebaseAuthService.afAuth.authState | async)"
-        (click)="firebaseAuthService.logout()">
+        *ngIf="(authService.isLoggedIn)"
+        (click)="authService.logout()">
         Logout
       </button>
     </div>
@@ -73,20 +73,20 @@
     </button>
     <button
       mat-button
-      *ngIf="!(firebaseAuthService.afAuth.authState | async)"
+      *ngIf="!(authService.isLoggedIn)"
       routerLink="login">
       Login
     </button>
     <button
       mat-button
-      *ngIf="(firebaseAuthService.afAuth.authState | async)"
+      *ngIf="(authService.isLoggedIn)"
       routerLink="profile">
       Profile
     </button>
     <button
       mat-button
-      *ngIf="(firebaseAuthService.afAuth.authState | async)"
-      (click)="firebaseAuthService.logout()">
+      *ngIf="(authService.isLoggedIn)"
+      (click)="authService.logout()">
       Logout
     </button>
   </mat-sidenav>

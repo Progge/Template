@@ -1,61 +1,38 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {SnackBarService} from '../../../shared/feedback/snackbar.service';
-import {Router} from '@angular/router';
+import 'rxjs/add/observable/from';
 
 @Injectable()
 export class FirebaseAuthService {
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    private router: Router,
-    private snackBarService: SnackBarService,
-  ) { }
+  private auth;
 
-  loginFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  constructor(public afAuth: AngularFireAuth) {
+    this.auth = afAuth.auth;
   }
 
-  loginGoogle() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-      console.log(error);
-    });;
+  isLoggedIn(): boolean {
+    return !!this.auth.currentUser;
   }
 
-  loginEmail(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  loginFacebook(): Promise<any> {
+    return this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
-  signUp(email, password) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'sign-up');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  loginGoogle(): Promise<any> {
+    return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  logout() {
-    this.afAuth.auth.signOut();
-    this.router.navigate(['']);
-    this.snackBarService.showSnackBar('error', 'logout');
+  loginEmail(email, password): Promise<any> {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  signUp(email, password): Promise<any> {
+    return this.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  logout(): Promise<any> {
+    return this.auth.signOut();
   }
 }

@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../../environments/environment';
 import { FirebaseAuthService } from './auth/firebase-auth.service';
 import { FirebaseStorageService } from './storage/firebase-storage.service';
+import { FirebaseDatabaseService } from './database/firebase-database.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { FirebaseStorageService } from './storage/firebase-storage.service';
   ],
   declarations: [],
   exports: [],
-  providers: [FirebaseAuthService, FirebaseStorageService],
+  providers: [FirebaseAuthService, FirebaseStorageService, FirebaseDatabaseService],
 })
 export class FirebaseModule { }

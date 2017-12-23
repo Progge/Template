@@ -15,5 +15,4 @@ export class HeroListComponent implements OnInit {
   ngOnInit() {
     this.heroes = this.heroService.getHeroes();
   }
-
 }

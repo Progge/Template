@@ -26,10 +26,12 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "angular-phone-input": "^1.0.1",
     "angularfire2": "^5.0.0-rc.4",
     "core-js": "^2.4.1",
     "firebase": "4.8.0",
     "hammerjs": "^2.0.8",
+    "ngx-phone-mask": "^2.1.3",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

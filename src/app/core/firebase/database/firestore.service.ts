@@ -10,20 +10,18 @@ import { Observable} from 'rxjs/Observable';
 @Injectable()
 export abstract class FirestoreService<ItemClass> {
 
-  abstract readonly COLLECTION_PATH: string;
-
   constructor(private afs: AngularFirestore) {}
 
-  doc$(id: string): AngularFirestoreDocument<ItemClass> {
-    return this.afs.doc(`${this.COLLECTION_PATH}/${id}`);
+  doc$(path: string, id: string): AngularFirestoreDocument<ItemClass> {
+    return this.afs.doc(`${path}/${id}`);
   }
 
-  col$(queryFn?: QueryFn): AngularFirestoreCollection<ItemClass> {
-    return this.afs.collection(this.COLLECTION_PATH, queryFn);
+  col$(path: string, queryFn?: QueryFn): AngularFirestoreCollection<ItemClass> {
+    return this.afs.collection(path, queryFn);
   }
 
-  colWithIds$(queryFn?: QueryFn): Observable<ItemClass[]> {
-    return this.col$(queryFn).snapshotChanges().map(actions => {
+  colWithIds$(path: string, queryFn?: QueryFn): Observable<ItemClass[]> {
+    return this.col$(path, queryFn).snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as ItemClass;
         data['id'] = a.payload.doc.id;

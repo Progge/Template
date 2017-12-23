@@ -5,11 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { HeroesModule } from './heroes/heroes.module';
-import { LoginsModule } from './logins/logins.module';
 import { AboutUsModule } from './about-us/about-us.module';
-import {ProfileModule} from './profile/profile.module';
-
-
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +17,8 @@ import {ProfileModule} from './profile/profile.module';
     AppRoutingModule,
     CoreModule,
     HeroesModule,
-    LoginsModule,
     AboutUsModule,
-    ProfileModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

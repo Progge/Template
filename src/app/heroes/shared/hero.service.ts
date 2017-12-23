@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {FirebaseDatabaseService} from '../../core/firebase/database/firebase-database.service';
 import {Hero} from './hero.model';
-import {Observable} from 'rxjs/Observable';
+import { FirebaseDatabaseService } from '../../core/firebase/database/firebase-database.service';
 
 @Injectable()
-export class HeroService extends FirebaseDatabaseService<Hero> {
-  COLLECTION_PATH = 'heroes';
+export class HeroService {
+  private readonly PATH: string = 'heroes';
+  constructor(private db: FirebaseDatabaseService<Hero>) {
+  }
 
-  getHeroes(): Observable<Hero[]> {
-    return super.getItems();
+  getHeroes() {
+    return this.db.getItems(this.PATH);
   }
 }

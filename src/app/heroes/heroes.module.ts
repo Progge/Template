@@ -47,7 +47,10 @@ import {SharedModule} from '../shared/shared.module';
   ],
   providers: [
     HeroService,
+<<<<<<< HEAD
     HeroFormService
+=======
+>>>>>>> 1f55b79b7632e461780401cc9357804184cded43
   ]
 })
 export class HeroesModule { }
