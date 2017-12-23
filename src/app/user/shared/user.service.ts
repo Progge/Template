@@ -50,7 +50,10 @@ export class UserService {
     if (password !== repeat) { return; }
     this.auth.signUp(email, password)
       .then(user => {
-        this.updateUser(user);
+        this.updateUser({
+          ...user,
+          phoneNumber: phone,
+        });
       });
   }
 
