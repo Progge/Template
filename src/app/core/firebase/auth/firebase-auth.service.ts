@@ -9,53 +9,29 @@ export class FirebaseAuthService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    private router: Router,
-    private snackBarService: SnackBarService,
   ) { }
 
-  loginFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  providerFacebook() {
+    return new firebase.auth.FacebookAuthProvider();
   }
 
-  loginGoogle() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-      console.log(error);
-    });;
+  loginFacebook(): Promise<any> {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
-  loginEmail(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'login');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  loginGoogle(): Promise<any> {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  signUp(email, password) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSnackBar('success', 'sign-up');
-        console.log(success);
-      }).catch((error) => {
-        console.log(error);
-    });
+  loginEmail(email, password): Promise<any> {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  logout() {
-    this.afAuth.auth.signOut();
-    this.router.navigate(['']);
-    this.snackBarService.showSnackBar('error', 'logout');
+  signUp(email, password): Promise<any> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  logout(): Promise<any> {
+    return this.afAuth.auth.signOut();
   }
 }

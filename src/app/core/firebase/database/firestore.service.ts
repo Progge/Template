@@ -10,16 +10,20 @@ import { Observable} from 'rxjs/Observable';
 @Injectable()
 export abstract class FirestoreService<ItemClass> {
 
-  abstract readonly COLLECTION_PATH: string;
+  private PATH: string;
+
+  set COLLECTION_PATH(path: string) {
+    this.PATH = path;
+  }
 
   constructor(private afs: AngularFirestore) {}
 
   doc$(id: string): AngularFirestoreDocument<ItemClass> {
-    return this.afs.doc(`${this.COLLECTION_PATH}/${id}`);
+    return this.afs.doc(`${this.PATH}/${id}`);
   }
 
   col$(queryFn?: QueryFn): AngularFirestoreCollection<ItemClass> {
-    return this.afs.collection(this.COLLECTION_PATH, queryFn);
+    return this.afs.collection(this.PATH, queryFn);
   }
 
   colWithIds$(queryFn?: QueryFn): Observable<ItemClass[]> {

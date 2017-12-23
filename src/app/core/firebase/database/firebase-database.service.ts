@@ -10,18 +10,30 @@ import DocumentReference = firebase.firestore.DocumentReference;
  */
 
 @Injectable()
-export class DatabaseService<ItemClass> extends FirestoreService<ItemClass> {
+export class FirebaseDatabaseService<ItemClass> extends FirestoreService<ItemClass> {
+
+  getTimestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
+  }
 
   getItem (id: string): Observable<ItemClass> {
     return super.doc$(id).valueChanges();
   }
 
-  addItem (item: ItemClass): Promise<DocumentReference> {
+  insertItem (item: ItemClass): Promise<DocumentReference> {
     return super.col$().add(item);
   }
 
-  updateItem (id: string, new_data: any): Promise<void> {
-    return super.doc$(id).update(new_data);
+  updateItem (id: string, data: any): Promise<void> {
+    return super.doc$(id).update(data);
+  }
+
+  upsertItem(id: string, data: any) {
+    return super.doc$(id).set(data, {merge: true});
+  }
+
+  setItem (id: string, data: any): Promise<void> {
+    return super.doc$(id).set(data);
   }
 
   deleteItem (id: string): Promise<void> {
