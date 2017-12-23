@@ -1,29 +1,38 @@
 <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
   <mat-input-container>
+    <input matInput placeholder="Phone Number" formControlName="phone" required maxlength="12">
+    <mat-error *ngIf="phone.touched && phone.hasError('required')">
+      Phone number is required.
+    </mat-error>
+    <mat-error *ngIf="phone.touched && !phone.hasError('required') && phone.hasError('pattern')">
+      That phone number is incorrect.
+    </mat-error>
+  </mat-input-container>
+  <mat-input-container>
     <input matInput placeholder="Email" formControlName="email" required>
     <mat-error *ngIf="email.touched && email.hasError('required')">
-      Email address krävs.
+      Email is required.
     </mat-error>
     <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('pattern')">
-      Felaktig email address.
+      Incorrect email address.
     </mat-error>
   </mat-input-container>
   <mat-input-container>
-    <input matInput placeholder="Lösenord" type="password" formControlName="password" required>
+    <input matInput placeholder="Password" type="password" formControlName="password" required>
     <mat-error *ngIf="password.touched && password.hasError('required')">
-      Lösenord krävs.
+      Password is required.
     </mat-error>
     <mat-error *ngIf="password.touched && !password.hasError('required') && password.hasError('minlength')">
-      Lösenordet måste bestå av minst {{password.errors.minlength.requiredLength}} bokstäver.
+      The password consist of at least {{password.errors.minlength.requiredLength}} characters.
     </mat-error>
   </mat-input-container>
   <mat-input-container>
-    <input matInput placeholder="Upprepa Lösenord" type="password" formControlName="repeat" required>
+    <input matInput placeholder="Repeat Password" type="password" formControlName="repeat" required>
     <mat-error *ngIf="repeat.touched && repeat.hasError('required')">
-      Upprepning av lösenord krävs.
+      Repetition of password is required.
     </mat-error>
     <mat-hint style="color:red;" *ngIf="repeat.touched && signUpForm.errors && signUpForm.errors.passwordsDoNotMatch">
-      Lösenorden skiljer sig.
+      The passwords do not match.
     </mat-hint>
   </mat-input-container>
   <!--Submit-->
@@ -33,5 +42,5 @@
     id="email"
     class="login-button"
     [disabled]="signUpForm.invalid"
-  >Skapa Konto</button>
+  >Create Account</button>
 </form>

@@ -3,28 +3,29 @@ import { QueryFn } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { FirestoreService } from './firestore.service';
 import * as firebase from 'firebase';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 /**
  * Abstract class for Database Communication
  */
 
 @Injectable()
-export abstract class FirebaseDatabaseService<ItemClass> extends FirestoreService<ItemClass> {
+export class DatabaseService<ItemClass> extends FirestoreService<ItemClass> {
 
   getItem (id: string): Observable<ItemClass> {
     return super.doc$(id).valueChanges();
   }
 
-  addItem (item: ItemClass): void {
-    super.col$().add(item);
+  addItem (item: ItemClass): Promise<DocumentReference> {
+    return super.col$().add(item);
   }
 
-  updateItem (id: string, new_data: any): void {
-    super.doc$(id).update(new_data);
+  updateItem (id: string, new_data: any): Promise<void> {
+    return super.doc$(id).update(new_data);
   }
 
-  deleteItem (id: string): void {
-    super.doc$(id).delete();
+  deleteItem (id: string): Promise<void> {
+    return super.doc$(id).delete();
   }
 
   getItems (queryFn?: QueryFn): Observable<ItemClass[]> {

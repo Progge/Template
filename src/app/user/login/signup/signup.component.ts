@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PasswordValidators } from '../password/password.validators';
-import { EMAIL_PATTERN } from '../../../shared/shared.constants';
-import {LoginService} from '../shared/login.service';
+import { EMAIL_PATTERN, PHONE_PATTERN } from '../../../shared/shared.constants';
+import { UserService } from '../../shared/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +15,9 @@ export class SignupComponent {
   @Output('signUpSuccess') signUpSuccess= new EventEmitter();
 
   signUpForm = new FormGroup({
+    phone: new FormControl('',
+      [Validators.required, Validators.pattern(PHONE_PATTERN)],
+    ),
     email: new FormControl('',
       [Validators.required, Validators.pattern(EMAIL_PATTERN)],
     ),
@@ -26,7 +29,11 @@ export class SignupComponent {
     ),
   }, PasswordValidators.passwordsDoNotMatch);
 
-  constructor(private loginService: LoginService) {}
+  constructor(private userService: UserService) {}
+
+  get phone() {
+    return this.signUpForm.get('phone');
+  }
 
   get email() {
     return this.signUpForm.get('email');
@@ -41,7 +48,7 @@ export class SignupComponent {
   }
 
   signUp() {
-    this.loginService.signUp(this.email.value, this.password.value, this.repeat.value);
-    this.signUpSuccess.emit({email: this.email.value, password: this.password.value});
+    this.userService.signUp(this.phone.value, this.email.value, this.password.value, this.repeat.value);
+    this.signUpSuccess.emit(true);
   }
 }
