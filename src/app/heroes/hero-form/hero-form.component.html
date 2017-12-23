@@ -1,15 +1,27 @@
 <mat-card>
   <mat-card-content>
     <h2>Heroes Form</h2>
-    <mat-form-field>
-      <input matInput placeholder="Name">
-    </mat-form-field>
-    <mat-form-field>
-      <input class="remove-spinner" matInput placeholder="Age" type="number">
-    </mat-form-field>
-    <agm-map class="agm-map" [latitude]="lat" [longitude]="lng">
-      <agm-marker (dragEnd)="markerMoved($event)" [markerDraggable]="true" [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
+    <form #heroForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input class="remove-spinner" matInput placeholder="Age" type="number">
+      </mat-form-field>
+      <h3>Address</h3>
+      <agm-map [zoom]="15" class="agm-map" [latitude]="lat" [longitude]="lng">
+        <agm-marker (dragEnd)="markerMoved($event)" [markerDraggable]="true" [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+      <mat-list *ngIf="addressObs|async; else loading">
+        <mat-list-item>
+          {{(addressObs | async)?.results[0]?.formatted_address}}
+        </mat-list-item>
+      </mat-list>
+      <mat-input-container>
+        <input matInput [(ngModel)]="address" name="address">
+      </mat-input-container>
+      <ng-template #loading>Loading</ng-template>
+    </form>
   </mat-card-content>
 </mat-card>
 
