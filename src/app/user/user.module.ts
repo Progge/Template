@@ -5,12 +5,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user.component';
 import { UserService } from './shared/user.service';
 import { LoginModule } from './login/login.module';
+import {NgxPhoneMaskModule} from 'ngx-phone-mask';
 
 @NgModule({
   imports: [
     CommonModule,
     LoginModule,
     UserRoutingModule,
+    NgxPhoneMaskModule,
   ],
   declarations: [
     UserComponent,
