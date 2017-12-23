@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HeroService} from '../shared/hero.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-hero-list',

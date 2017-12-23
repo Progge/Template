@@ -1,4 +1,4 @@
-<mat-card class="card-margin">
+<mat-card class="card-margin" (click)="goToHero(hero.id)">
   <mat-card-header>
     <img mat-card-avatar src="{{ hero.image }}">
     <mat-card-title>{{hero.name}}</mat-card-title>

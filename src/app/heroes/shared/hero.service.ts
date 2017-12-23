@@ -11,4 +11,8 @@ export class HeroService {
   getHeroes() {
     return this.db.getItems(this.PATH);
   }
+
+  getHero(id) {
+    return this.db.getItem(this.PATH, id);
+  }
 }

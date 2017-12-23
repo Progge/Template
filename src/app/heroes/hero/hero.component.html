@@ -1,3 +1,6 @@
-<p>
-  hero works!
-</p>
+<span *ngIf="hero">
+  <mat-card>
+    <img mat-card-image src="{{hero.image}}">
+    <mat-card-content></mat-card-content>
+  </mat-card>
+</span>
