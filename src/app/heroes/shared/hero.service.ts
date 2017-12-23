@@ -4,11 +4,11 @@ import { FirebaseDatabaseService } from '../../core/firebase/database/firebase-d
 
 @Injectable()
 export class HeroService {
+  private readonly PATH: string = 'heroes';
   constructor(private db: FirebaseDatabaseService<Hero>) {
-    db.COLLECTION_PATH = 'heroes';
   }
 
   getHeroes() {
-    return this.db.getItems();
+    return this.db.getItems(this.PATH);
   }
 }

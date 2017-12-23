@@ -31,6 +31,16 @@ export class SignupComponent {
 
   constructor(private userService: UserService) {}
 
+  onlyNumbers(event: any) {
+    const pattern = /[0-9\+]/;
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      // invalid character, prevent input
+      event.preventDefault();
+    }
+  }
+
   get phone() {
     return this.signUpForm.get('phone');
   }
@@ -49,6 +59,5 @@ export class SignupComponent {
 
   signUp() {
     this.userService.signUp(this.phone.value, this.email.value, this.password.value, this.repeat.value);
-    this.signUpSuccess.emit(true);
   }
 }

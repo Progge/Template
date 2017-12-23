@@ -16,31 +16,31 @@ export class FirebaseDatabaseService<ItemClass> extends FirestoreService<ItemCla
     return firebase.firestore.FieldValue.serverTimestamp();
   }
 
-  getItem (id: string): Observable<ItemClass> {
-    return super.doc$(id).valueChanges();
+  getItem (path: string, id: string): Observable<ItemClass> {
+    return super.doc$(path, id).valueChanges();
   }
 
-  insertItem (item: ItemClass): Promise<DocumentReference> {
-    return super.col$().add(item);
+  insertItem (path: string, item: ItemClass): Promise<DocumentReference> {
+    return super.col$(path).add(item);
   }
 
-  updateItem (id: string, data: any): Promise<void> {
-    return super.doc$(id).update(data);
+  updateItem (path: string, id: string, data: any): Promise<void> {
+    return super.doc$(path, id).update(data);
   }
 
-  upsertItem(id: string, data: any) {
-    return super.doc$(id).set(data, {merge: true});
+  upsertItem(path: string, id: string, data: any) {
+    return super.doc$(path, id).set(data, {merge: true});
   }
 
-  setItem (id: string, data: any): Promise<void> {
-    return super.doc$(id).set(data);
+  setItem (path: string, id: string, data: any): Promise<void> {
+    return super.doc$(path, id).set(data);
   }
 
-  deleteItem (id: string): Promise<void> {
-    return super.doc$(id).delete();
+  deleteItem (path: string, id: string): Promise<void> {
+    return super.doc$(path, id).delete();
   }
 
-  getItems (queryFn?: QueryFn): Observable<ItemClass[]> {
-    return super.colWithIds$(queryFn);
+  getItems (path: string, queryFn?: QueryFn): Observable<ItemClass[]> {
+    return super.colWithIds$(path, queryFn);
   }
 }

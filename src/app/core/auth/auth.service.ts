@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {FirebaseAuthService} from '../../core/firebase/auth/firebase-auth.service';
+import {FirebaseAuthService} from '../firebase/auth/firebase-auth.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -7,10 +8,14 @@ export class AuthService {
   constructor(private firebaseAuthService: FirebaseAuthService) { }
 
   get isLoggedIn(): boolean {
-    return !!this.firebaseAuthService.afAuth.auth.currentUser;
+    return this.firebaseAuthService.isLoggedIn();
   }
 
   get isAdmin(): boolean {
     return false;
+  }
+
+  logout() {
+    this.firebaseAuthService.logout();
   }
 }

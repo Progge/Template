@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SnackBarService} from './feedback/snackbar.service';
 
 import { MatSnackBarModule } from '@angular/material';
-import {AuthModule} from './auth/auth.module';
+import {AuthModule} from '../core/auth/auth.module';
 
 @NgModule({
   imports: [

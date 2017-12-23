@@ -9,6 +9,7 @@ import { FirebaseAuthService } from '../../core/firebase/auth/firebase-auth.serv
 @Injectable()
 export class UserService {
   user: Observable<User>;
+  private readonly PATH: string = 'users';
 
   constructor(
     private db: FirebaseDatabaseService<User>,
@@ -16,8 +17,6 @@ export class UserService {
     private snackBarService: SnackBarService,
     private auth: FirebaseAuthService,
   ) {
-    db.COLLECTION_PATH = 'users';
-    this.setUser();
   }
 
   loginEmail(email: string, password: string) {
@@ -33,6 +32,7 @@ export class UserService {
   loginFacebook() {
     this.auth.loginFacebook()
       .then((credential) => {
+        console.log(credential);
         this.updateUser(credential.user);
         this.setUser();
       });
@@ -54,6 +54,7 @@ export class UserService {
           ...user,
           phoneNumber: phone,
         });
+        this.setUser();
       });
   }
 
@@ -67,7 +68,7 @@ export class UserService {
       photoURL: user.photoURL,
     };
     data = this.cleanData(data);
-    this.db.upsertItem(user.uid, data);
+    this.db.upsertItem(this.PATH, user.uid, data);
   }
 
   private cleanData(data) {
@@ -79,7 +80,7 @@ export class UserService {
     this.user = this.auth.afAuth.authState
       .switchMap(user => {
         if (user) {
-          return this.db.getItem(user.uid);
+          return this.db.getItem(this.PATH, user.uid);
         }
         return Observable.of(null);
       });

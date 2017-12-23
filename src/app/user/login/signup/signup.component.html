@@ -1,6 +1,7 @@
 <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+  <!--Phone Number-->
   <mat-input-container>
-    <input matInput placeholder="Phone Number" formControlName="phone" required maxlength="12">
+    <input matInput (keypress)="onlyNumbers($event)" placeholder="Phone Number" formControlName="phone" required maxlength="12">
     <mat-error *ngIf="phone.touched && phone.hasError('required')">
       Phone number is required.
     </mat-error>
@@ -8,6 +9,8 @@
       That phone number is incorrect.
     </mat-error>
   </mat-input-container>
+
+  <!--Email-->
   <mat-input-container>
     <input matInput placeholder="Email" formControlName="email" required>
     <mat-error *ngIf="email.touched && email.hasError('required')">
@@ -17,15 +20,19 @@
       Incorrect email address.
     </mat-error>
   </mat-input-container>
+
+  <!--Password-->
   <mat-input-container>
     <input matInput placeholder="Password" type="password" formControlName="password" required>
     <mat-error *ngIf="password.touched && password.hasError('required')">
       Password is required.
     </mat-error>
     <mat-error *ngIf="password.touched && !password.hasError('required') && password.hasError('minlength')">
-      The password consist of at least {{password.errors.minlength.requiredLength}} characters.
+      The password consist of at least {{ password.errors.minlength.requiredLength }} characters.
     </mat-error>
   </mat-input-container>
+
+  <!--Repeat Password-->
   <mat-input-container>
     <input matInput placeholder="Repeat Password" type="password" formControlName="repeat" required>
     <mat-error *ngIf="repeat.touched && repeat.hasError('required')">
@@ -35,6 +42,7 @@
       The passwords do not match.
     </mat-hint>
   </mat-input-container>
+
   <!--Submit-->
   <button
     mat-raised-button
