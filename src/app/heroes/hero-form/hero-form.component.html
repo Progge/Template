@@ -1,14 +1,19 @@
 <mat-card>
   <mat-card-content>
     <h2>Heroes Form</h2>
-    <form #heroForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" >
       <mat-form-field>
-        <input matInput placeholder="Name">
+        <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required #name="ngModel">
       </mat-form-field>
       <mat-form-field>
         <input class="remove-spinner" matInput placeholder="Age" type="number">
       </mat-form-field>
       <app-maps-address></app-maps-address>
+      <div>
+        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper><br>
+        <img *ngIf="data.image" [src]="data.image">
+      </div>
+      <button mat-button color="primary" type="submit" [disabled]="!heroForm.valid">Submit</button>
     </form>
   </mat-card-content>
 </mat-card>

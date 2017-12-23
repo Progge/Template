@@ -19,6 +19,7 @@ import {HeroFormService} from './hero-form/hero-form.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
+import {ImageCropperModule} from 'ng2-img-cropper';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import {SharedModule} from '../shared/shared.module';
     FormsModule,
     FlexLayoutModule,
     HeroesRoutingModule,
+    ImageCropperModule,
     MatListModule,
     MatCardModule,
     MatIconModule,
@@ -47,10 +49,7 @@ import {SharedModule} from '../shared/shared.module';
   ],
   providers: [
     HeroService,
-<<<<<<< HEAD
     HeroFormService
-=======
->>>>>>> 1f55b79b7632e461780401cc9357804184cded43
   ]
 })
 export class HeroesModule { }

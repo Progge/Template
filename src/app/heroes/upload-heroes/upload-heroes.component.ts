@@ -28,4 +28,10 @@ export class UploadHeroesComponent {
       console.log(upload);
     });
   }
+
+  onDrop($event) {
+    event.preventDefault();
+    console.log($event);
+
+  }
 }
