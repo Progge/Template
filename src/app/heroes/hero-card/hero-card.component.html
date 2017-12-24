@@ -1,15 +1,10 @@
-<mat-card class="card-margin" (click)="goToHero(hero.id)">
+<mat-card class="card-margin">
   <mat-card-header>
     <img mat-card-avatar src="{{ hero.image }}">
-    <mat-card-title>{{hero.name}}</mat-card-title>
+    <mat-card-title (click)="goToHero(hero.id)">{{hero.name}}</mat-card-title>
     <mat-card-subtitle>Superhero</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{ hero.image }}">
-  <mat-card-content>
-    <p>Age: {{ hero.age }}</p>
-    <p>Strength: {{ hero.strength }}</p>
-    <p>Speed: {{ hero.speed }}</p>
-  </mat-card-content>
+  <img mat-card-image src="{{ hero.image }}" (click)="goToHero(hero.id)">
   <mat-card-actions style="display:flex;">
     <button mat-button><mat-icon style="color:red;">favorite</mat-icon> LIKE</button>
     <span class="fill-remaining-space"></span>
