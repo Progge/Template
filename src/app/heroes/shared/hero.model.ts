@@ -1,11 +1,9 @@
-export class Hero {
+export interface Hero {
 
-  public id: any;
-  public name: string;
-  public image: string;
-  public age: number;
-  public speed: number;
-  public strength: number;
-
-  constructor() {}
+  id: any;
+  name: string;
+  image: string;
+  age: number;
+  speed: number;
+  strength: number;
 }
