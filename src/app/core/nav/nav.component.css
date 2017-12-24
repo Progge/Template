@@ -1,6 +1,6 @@
 
-mat-sidenav {
-  /*padding: 7.5px 7.5px 0 0!important;*/
+mat-sidenav > button{
+  color: #444444!important;
 }
 
 .sidenav-button {
@@ -26,4 +26,8 @@ mat-sidenav>button {
   width: 100%;
   display:block;
   text-align: left;
+}
+
+.sidenav-icon {
+  margin: 0 15px;
 }

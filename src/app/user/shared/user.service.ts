@@ -20,6 +20,16 @@ export class UserService {
     this.setUser();
   }
 
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  logout(): void {
+    this.auth.logout();
+    this.user = Observable.of(null);
+    this.snackBarService.showSnackBar('error', 'logout');
+  }
+
   loginEmail(email: string, password: string) {
     this.auth.loginEmail(email, password)
       .then((success) => {
