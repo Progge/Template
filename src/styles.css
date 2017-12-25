@@ -34,3 +34,11 @@ input.remove-spinner{
   align-items: center;
   flex-direction: column;
 }
+
+/*Div to create perfect squares*/
+/*Make objects inside 'position: absolute' to fill square*/
+.div-square {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}

@@ -11,12 +11,6 @@ mat-card-title {
   cursor: pointer;
 }
 
-.div-square {
-  position: relative;
-  padding-bottom: 100%;
-  overflow: hidden;
-}
-
 mat-card-content {
   margin: 0 -16px;
 }
