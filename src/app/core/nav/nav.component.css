@@ -21,7 +21,6 @@ mat-sidenav>button {
   font-size: 18px;
   color: #333;
   padding: 10px 50px 10px 10px;
-  border-bottom: solid 1px gray;
   border-radius: 0%;
   width: 100%;
   display:block;
@@ -29,5 +28,10 @@ mat-sidenav>button {
 }
 
 .sidenav-icon {
-  margin: 0 15px;
+  margin: 0 10px;
+}
+
+hr {
+  color: black;
+  margin: 0 !important;
 }
