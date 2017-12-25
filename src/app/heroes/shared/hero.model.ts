@@ -6,4 +6,5 @@ export interface Hero {
   age: number;
   speed: number;
   strength: number;
+  slogan: string;
 }

@@ -1,4 +1,4 @@
-.card-margin{
+.hero-card{
   margin: 5px 5px 0 5px;
 }
 
@@ -7,6 +7,16 @@ mat-card-title {
 }
 
 .mat-card-image {
+  position: absolute;
   cursor: pointer;
-  margin-bottom: 0;
+}
+
+.div-square {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+mat-card-content {
+  margin: 0 -16px;
 }

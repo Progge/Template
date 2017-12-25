@@ -15,6 +15,7 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
 import {AgmCoreModule} from '@agm/core';
 import {environment} from '../../environments/environment';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
+import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
     HeroListComponent,
     HeroCardComponent,
     HeroFormComponent,
-    UploadHeroesComponent
+    UploadHeroesComponent,
+    HeroFavoriteComponent
   ],
   providers: [
     HeroService,
