@@ -3,10 +3,10 @@ import {UserService} from '../shared/user.service';
 
 @Component({
   selector: 'app-profile-page',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './profile-page.component.html',
+  styleUrls: ['./profile-page.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfilePageComponent implements OnInit {
 
   user: any;
 
