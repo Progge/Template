@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PasswordValidators } from '../password/password.validators';
 import { EMAIL_PATTERN, PHONE_PATTERN } from '../../../shared/shared.constants';
@@ -12,17 +12,24 @@ import { UserService } from '../../shared/user.service';
 
 export class SignupComponent {
 
-  @Output('signUpSuccess') signUpSuccess= new EventEmitter();
-
   signUpForm = new FormGroup({
     phone: new FormControl('',
-      [Validators.required, Validators.pattern(PHONE_PATTERN)],
+      [
+        Validators.required,
+        Validators.pattern(PHONE_PATTERN),
+      ],
     ),
     email: new FormControl('',
-      [Validators.required, Validators.pattern(EMAIL_PATTERN)],
+      [
+        Validators.required,
+        Validators.pattern(EMAIL_PATTERN)
+      ],
     ),
     password: new FormControl('',
-      [Validators.required, Validators.minLength(8)],
+      [
+        Validators.required,
+        Validators.minLength(8),
+      ],
     ),
     repeat: new FormControl('',
       [Validators.required],

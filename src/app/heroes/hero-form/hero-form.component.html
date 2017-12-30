@@ -9,19 +9,24 @@
         <input class="remove-spinner" matInput placeholder="Age" type="number">
       </mat-form-field>
       <app-maps-address></app-maps-address>
-      <div>
-        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper><br>
-        <img *ngIf="data.image" [src]="data.image">
+      <div fxLayout fxLayoutWrap="wrap">
+        <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <div>
+          <img *ngIf="data.image" [src]="data.image" style="width:300px;height:300px;object-fit: cover">
+        </div>
       </div>
       <button mat-button color="primary" type="submit" [disabled]="!heroForm.valid">Submit</button>
-      <button mat-raised-button fileDrop
-           [ngClass]="{'lower-opacity': fileIsOver}"
-           [options]="options"
-           (fileOver)="fileOver($event)"
-           (onFileDrop)="onFileDrop($event)"
+      <button mat-raised-button fileDrop type="button"
+              [ngClass]="{'lower-opacity': fileIsOver}"
+              [options]="options"
+              (fileOver)="fileOver($event)"
+              (onFileDrop)="onFileDrop($event)"
+              onclick="document.getElementById('image').click()"
       >
+        <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
         Drop file here
       </button>
+
     </form>
   </mat-card-content>
 </mat-card>

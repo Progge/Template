@@ -28,3 +28,17 @@ input.remove-spinner::-webkit-inner-spin-button {
 input.remove-spinner{
   -moz-appearance:textfield;
 }
+
+#center-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*Div to create perfect squares*/
+/*Make objects inside 'position: absolute' to fill square*/
+.div-square {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}

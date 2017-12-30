@@ -12,10 +12,12 @@ import {
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { FirebaseModule } from './firebase/firebase.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     FlexLayoutModule,
     RouterModule,
     MatToolbarModule,

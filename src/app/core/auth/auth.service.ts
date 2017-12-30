@@ -14,8 +14,4 @@ export class AuthService {
   get isAdmin(): boolean {
     return false;
   }
-
-  logout() {
-    this.firebaseAuthService.logout();
-  }
 }

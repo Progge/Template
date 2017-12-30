@@ -18,6 +18,6 @@ export class MapsAddressService {
 
   getCords(formattedAddress: String): Observable<any> {
     return this.http.get<any>(this.mapsUrl + 'address=' + formattedAddress + '&key=' + this.apiKey);
-
+  }
 
 }

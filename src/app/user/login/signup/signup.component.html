@@ -1,14 +1,4 @@
 <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
-  <!--Phone Number-->
-  <mat-input-container>
-    <input matInput (keypress)="onlyNumbers($event)" placeholder="Phone Number" formControlName="phone" required maxlength="12">
-    <mat-error *ngIf="phone.touched && phone.hasError('required')">
-      Phone number is required.
-    </mat-error>
-    <mat-error *ngIf="phone.touched && !phone.hasError('required') && phone.hasError('pattern')">
-      That phone number is incorrect.
-    </mat-error>
-  </mat-input-container>
 
   <!--Email-->
   <mat-input-container>
@@ -21,6 +11,17 @@
     </mat-error>
   </mat-input-container>
 
+  <!--Phone Number-->
+  <mat-input-container>
+    <input matInput (keypress)="onlyNumbers($event)" placeholder="Phone Number" formControlName="phone" required maxlength="12">
+    <mat-error *ngIf="phone.touched && phone.hasError('required')">
+      Phone number is required.
+    </mat-error>
+    <mat-error *ngIf="phone.touched && !phone.hasError('required') && phone.hasError('pattern')">
+      That phone number is incorrect.
+    </mat-error>
+  </mat-input-container>
+
   <!--Password-->
   <mat-input-container>
     <input matInput placeholder="Password" type="password" formControlName="password" required>
@@ -28,7 +29,7 @@
       Password is required.
     </mat-error>
     <mat-error *ngIf="password.touched && !password.hasError('required') && password.hasError('minlength')">
-      The password consist of at least {{ password.errors.minlength.requiredLength }} characters.
+      Password must consist of at least {{ password.errors.minlength.requiredLength }} characters.
     </mat-error>
   </mat-input-container>
 

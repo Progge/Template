@@ -1,0 +1,19 @@
+<span *ngIf="user">
+  <div fxLayout fxLayoutWrap="wrap">
+    <div fxFlex="50">
+      <div class="div-square">
+        <span *ngIf="user.photoURL">
+          <img src="{{user.photoURL}}" style="position: absolute; width:100%;">
+        </span>
+        <span *ngIf="!user.photoURL">
+          <div style="background-color: #999; opacity:0.2; width: 100%; position: absolute; padding-bottom: 100%;">
+            LADDA UPP PROFILBILD DÅ <br> GÖR DE <br> <br> SKA DU BELDRA MIG
+          </div>
+        </span>
+      </div>
+    </div>
+    <div fxFlex="50">
+      Name: {{user.displayName}} <br> Email: {{user.email}} <br> Phone: {{user.phoneNumber}}
+    </div>
+  </div>
+</span>

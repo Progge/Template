@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class UploadHeroesComponent {
   selectedFiles: FileList;
   progresses: {name: string, percentage: number}[];
 
-  constructor(private uploadService: FirebaseStorageService) {}
+  constructor(private uploadService: FirebaseStorageService) { }
 
   selectFiles(event) {
     this.selectedFiles = event.target.files;

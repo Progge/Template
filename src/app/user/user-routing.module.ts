@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth/guards/auth.guard';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserComponent } from './user.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {
@@ -11,9 +12,13 @@ const routes: Routes = [
     children: [
       {
         path: 'profile',
-        component: ProfileComponent,
+        component: ProfilePageComponent,
         canActivate: [AuthGuard],
-      }
+      },
+      {
+        path: 'sign-in',
+        component: LoginComponent,
+      },
     ]
   },
 ];

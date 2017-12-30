@@ -1,0 +1,29 @@
+#hero-card {
+  max-width:750px;
+  margin: 15px auto;
+  padding: 0;
+  border: 0;
+}
+
+#hero-footer {
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  margin:0;
+}
+
+mat-list-item {
+  margin:0 -16px;
+}
+
+mat-card-content  {
+  margin-top: 10px;
+}
+
+p {
+  vertical-align: middle;
+}
+
+.info-row {
+  align-items: center;
+}

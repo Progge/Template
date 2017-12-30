@@ -12,8 +12,6 @@ import {
   MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
-import {AgmCoreModule} from '@agm/core';
-import {environment} from '../../environments/environment';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
 import {HeroFormService} from './hero-form/hero-form.service';
 import {HttpClientModule} from '@angular/common/http';
@@ -21,6 +19,7 @@ import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {ImageCropperModule} from 'ng2-img-cropper';
 import {FileDropModule} from 'angular2-file-drop';
+import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
 
 @NgModule({
   imports: [
@@ -47,7 +46,8 @@ import {FileDropModule} from 'angular2-file-drop';
     HeroListComponent,
     HeroCardComponent,
     HeroFormComponent,
-    UploadHeroesComponent
+    UploadHeroesComponent,
+    HeroFavoriteComponent
   ],
   providers: [
     HeroService,

@@ -1,3 +1,48 @@
-<p>
-  hero works!
-</p>
+<mat-card id="hero-card" *ngIf="hero">
+  <div *ngIf="hero" fxLayout fxLayout.xs="column" fxLayoutWrap="true">
+    <div fxFlex="70">
+      <img src="{{hero.image}}" style="width:100%; margin-bottom:-3px;">
+    </div>
+    <div fxFlex="30" style="padding:15px; position: relative;">
+      <mat-card-header>
+        <img mat-card-avatar class="header-image" src="{{hero.image}}">
+        <mat-card-title style="margin-bottom:10px;">{{hero.name}}</mat-card-title>
+        <mat-card-subtitle>{{hero.age}} years old</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><b>Want to rent {{hero.name}}?</b></p>
+        <p>For an hourly fee {{hero.name}} will help you out with any of your everyday struggles.
+        You just pick the place, the time and provide the payment.</p>
+
+        <!--Strength-->
+        <div class="info-row" fxLayout="row">
+          <mat-icon>fitness_center</mat-icon>
+          <p>Strength: <b>{{hero.strength}}</b></p>
+        </div>
+
+        <!--Speed-->
+        <div class="info-row" fxLayout="row">
+          <mat-icon>directions_run</mat-icon>
+          <p>Speed: <b>{{hero.speed}}</b></p>
+        </div>
+
+        <!--Age-->
+        <div class="info-row" fxLayout="row">
+          <mat-icon>history</mat-icon>
+          <p>Age: <b>{{hero.age}} years old</b></p>
+        </div>
+
+        <!--Price-->
+        <div class="info-row" fxLayout="row">
+          <mat-icon>attach_money</mat-icon>
+          <p>Price: $<b>{{hero.price}}/h</b></p>
+        </div>
+
+
+      </mat-card-content>
+      <mat-card-footer id="hero-footer">
+        <mat-icon>favorite_border</mat-icon>
+      </mat-card-footer>
+    </div>
+  </div>
+</mat-card>
