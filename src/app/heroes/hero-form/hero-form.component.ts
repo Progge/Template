@@ -18,22 +18,22 @@ export class HeroFormComponent implements OnInit {
   model = new Hero();
   format: any;
   public fileIsOver = false;
+  exampleOptions= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
 
-  @Output() public options = {
+  @Output() public fileDropOptions = {
     readAs: 'DataURL'
   };
 
   constructor(private uploadService: FirebaseStorageService) {
-
+    /*Settings for the image cropper*/
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.preserveSize = true;
     this.cropperSettings.cropOnResize = true;
     this.cropperSettings.noFileInput = true;
     this.data = {};
-
   }
 
   ngOnInit(): void {
@@ -47,8 +47,10 @@ export class HeroFormComponent implements OnInit {
     this.fileIsOver = fileIsOver;
   }
 
-  public onFileDrop(file: File): void {
-    this.fileChangeListener(file);
+  public onFileDrop(base64String: string): void {
+    const image = new Image();
+    image.src = base64String;
+    this.cropper.setImage(image);
   }
 
 

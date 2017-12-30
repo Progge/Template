@@ -9,7 +9,8 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule, MatSelectModule,
+  MatSliderModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
@@ -34,6 +35,8 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatSliderModule,
+    MatSelectModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
