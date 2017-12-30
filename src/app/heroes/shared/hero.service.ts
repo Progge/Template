@@ -8,6 +8,11 @@ export class HeroService {
   constructor(private db: FirebaseDatabaseService<Hero>) {
   }
 
+  createHero(hero: Hero) {
+    console.log(hero);
+    return this.db.insertItem(this.PATH, hero);
+  }
+
   getHeroes() {
     return this.db.getItems(this.PATH);
   }

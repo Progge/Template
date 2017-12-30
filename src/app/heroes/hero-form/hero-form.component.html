@@ -16,7 +16,9 @@
             {{option}}
           </mat-option>
         </mat-select>
-      </mat-form-field>      <app-maps-address></app-maps-address>
+      </mat-form-field>
+      <app-maps-address name="formattedAddress" [(ngModel)]="model.formattedAddress"></app-maps-address>
+      <h4>Address: {{model.formattedAddress}}</h4>
       <div fxLayout fxLayoutWrap="wrap">
         <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
         <div>
@@ -31,7 +33,7 @@
               onclick="document.getElementById('image').click()"
       >
         <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
-        Drop file here
+        Click or Drop file here
       </button>
       <button mat-button color="primary" type="submit" [disabled]="!heroForm.valid">Submit</button>
     </form>

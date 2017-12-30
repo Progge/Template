@@ -1,21 +1,35 @@
-import {Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 import {MapsAddressService} from './maps-address.service';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
+const customValueProvider = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => MapsAddressComponent),
+  multi: true
+};
 
 @Component({
   selector: 'app-maps-address',
   templateUrl: './maps-address.component.html',
-  styleUrls: ['./maps-address.component.css']
+  styleUrls: ['./maps-address.component.css'],
+  providers: [ {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => MapsAddressComponent),
+    multi: true
+  } ]
 })
-export class MapsAddressComponent implements OnInit {
+export class MapsAddressComponent implements OnInit, ControlValueAccessor {
 
   lat = 0;
   lng = 0;
   addressObs;
+
+  @Input('formattedAddress')
   formattedAddress: string;
-  @Output() addressUpdated = new EventEmitter();
+
+  propagateChange: any = () => {};
 
   // Get the inputfield to become the Maps autocomplete field
   @ViewChild('search') public searchElement: ElementRef;
@@ -52,6 +66,8 @@ export class MapsAddressComponent implements OnInit {
     this.addressObs = this.heroFormService.getAddress(this.lat, this.lng);
     this.addressObs.subscribe(res => {
       this.formattedAddress = res.results[0].formatted_address;
+      this.propagateChange(this.formattedAddress);
+
     });
   }
 
@@ -75,6 +91,7 @@ export class MapsAddressComponent implements OnInit {
             const place: google.maps.places.PlaceResult = autocomplete.getPlace();
             // Update Address
             this.formattedAddress = place.formatted_address;
+            this.propagateChange(place.formatted_address);
             // Update Cords
             this.lat = place.geometry.location.lat();
             this.lng = place.geometry.location.lng();
@@ -86,6 +103,21 @@ export class MapsAddressComponent implements OnInit {
         });
       }
     );
+  }
+
+  /*Methods for the controlValue interface*/
+  writeValue(formattedAddress: any): void {
+    if (formattedAddress !== undefined) {
+      this.formattedAddress = formattedAddress;
+    }
+  }
+
+
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
   }
 }
 

@@ -7,4 +7,5 @@ export class Hero {
   speed: number;
   strength: number;
   slogan: string;
+  formattedAddress: string;
 }

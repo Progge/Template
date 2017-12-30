@@ -5,6 +5,7 @@ import {} from '@types/googlemaps';
 import {CropperSettings, ImageCropperComponent} from 'ng2-img-cropper';
 import {Hero} from '../shared/hero.model';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
+import {HeroService} from '../shared/hero.service';
 
 @Component({
   selector: 'app-hero-form',
@@ -19,15 +20,17 @@ export class HeroFormComponent implements OnInit {
   format: any;
   public fileIsOver = false;
   exampleOptions= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  imgFolder = 'images';
 
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
 
-  @Output() public fileDropOptions = {
+  /*Provides a base 64 string*/
+  fileDropOptions = {
     readAs: 'DataURL'
   };
 
-  constructor(private uploadService: FirebaseStorageService) {
+  constructor(private uploadService: FirebaseStorageService, private heroService: HeroService) {
     /*Settings for the image cropper*/
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.preserveSize = true;
@@ -68,7 +71,10 @@ export class HeroFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.data);
-    const upload = this.uploadService.pushBase64ImageToStorage(this.data.image, 'pick');
-    console.log(upload);
+    const upload = this.uploadService.uploadBase64Image(this.data.image, this.imgFolder,  this.model.name);
+    upload.then(res => {
+      this.model.image = res.downloadURL;
+      this.heroService.createHero(this.model);
+    });
   }
 }
