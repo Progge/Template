@@ -9,7 +9,6 @@ export class HeroService {
   }
 
   createHero(hero: Hero) {
-    console.log(hero);
     return this.db.insertItem(this.PATH, hero);
   }
 

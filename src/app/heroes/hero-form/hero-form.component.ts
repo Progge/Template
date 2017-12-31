@@ -16,7 +16,7 @@ export class HeroFormComponent implements OnInit {
 
   data: any;
   cropperSettings: CropperSettings;
-  model = new Hero();
+  model = <Hero>{};
   format: any;
   public fileIsOver = false;
   exampleOptions= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
