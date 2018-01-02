@@ -6,6 +6,9 @@ import {CropperSettings, ImageCropperComponent} from 'ng2-img-cropper';
 import {Hero} from '../shared/hero.model';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
 import {HeroService} from '../shared/hero.service';
+import {UserService} from '../../user/shared/user.service';
+import {Router} from '@angular/router';
+import {SnackBarService} from '../../shared/feedback/snackbar.service';
 
 @Component({
   selector: 'app-hero-form',
@@ -30,17 +33,21 @@ export class HeroFormComponent implements OnInit {
     readAs: 'DataURL'
   };
 
-  constructor(private uploadService: FirebaseStorageService, private heroService: HeroService) {
+  constructor(private uploadService: FirebaseStorageService, private heroService: HeroService, private userService: UserService,
+              private router: Router, private snackbarService: SnackBarService) {
     /*Settings for the image cropper*/
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.preserveSize = true;
+    /*
+      Force resolution with Instagram settings 640x640 or 1080x1080
+      this.cropperSettings.croppedHeight = 640;
+      this.cropperSettings.croppedWidth = 640;*/
     this.cropperSettings.cropOnResize = true;
     this.cropperSettings.noFileInput = true;
     this.data = {};
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   selectFiles(e) {
     this.fileChangeListener(e.target.files[0]);
@@ -74,7 +81,21 @@ export class HeroFormComponent implements OnInit {
     const upload = this.uploadService.uploadBase64Image(this.data.image, this.imgFolder,  this.model.name);
     upload.then(res => {
       this.model.image = res.downloadURL;
-      this.heroService.createHero(this.model);
+      if (this.userService.isLoggedIn) {
+        this.userService.user.subscribe(user => {
+          this.model.authorUserId = user.uid;
+          this.createHero();
+        });
+      } else {
+        this.createHero();
+      }
+    });
+  }
+
+  private createHero() {
+    this.heroService.createHero(this.model).then(res => {
+      this.snackbarService.showSnackBar('success', 'custom', 'Hero created!');
+      this.router.navigate(['heroes']);
     });
   }
 }

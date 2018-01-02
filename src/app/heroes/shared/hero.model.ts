@@ -8,4 +8,5 @@ export interface Hero {
   strength: number;
   slogan: string;
   formattedAddress: string;
+  authorUserId: string;
 }
