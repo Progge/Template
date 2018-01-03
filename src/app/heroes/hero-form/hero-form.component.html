@@ -20,9 +20,9 @@
       <app-maps-address name="formattedAddress" [(ngModel)]="model.formattedAddress"></app-maps-address>
       <h4>Address: {{model.formattedAddress}}</h4>
       <div fxLayout fxLayoutWrap="wrap">
-        <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <img-cropper #cropper [image]="ImageObject" [settings]="cropperSettings"></img-cropper>
         <div>
-          <img *ngIf="data.image" [src]="data.image" style="width:300px;height:300px;object-fit: cover">
+          <img *ngIf="ImageObject.image" [src]="ImageObject.image" style="width:300px;height:300px;object-fit: cover">
         </div>
       </div>
       <button mat-raised-button fileDrop type="button"
