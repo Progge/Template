@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HeroService} from '../shared/hero.service';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {Hero} from '../shared/hero.model';
 
 @Component({
   selector: 'app-hero-list',
@@ -9,11 +11,11 @@ import {Router} from '@angular/router';
 })
 export class HeroListComponent implements OnInit {
 
-  heroes: any;
+  @Input()
+  heroes: Observable<Hero[]>;
 
-  constructor(private heroService: HeroService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.heroes = this.heroService.getHeroes();
   }
 }

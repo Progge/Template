@@ -25,9 +25,6 @@ export class UserService {
   }
 
   get currentUser(): Observable<User> {
-    this.user.subscribe(res => {
-      console.log(res);
-    });
     return this.user;
   }
 
