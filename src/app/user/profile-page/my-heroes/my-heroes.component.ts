@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {HeroService} from '../../../heroes/shared/hero.service';
 import {User} from '../../shared/user.model';
 import {Hero} from '../../../heroes/shared/hero.model';
@@ -16,6 +16,9 @@ export class MyHeroesComponent implements OnInit {
 
   heroes: Observable<Hero[]>;
 
+  @ViewChild('componentDiv') parentDiv: ElementRef;
+
+
   constructor(private heroService: HeroService, private userService: UserService ) { }
 
   ngOnInit() {
@@ -23,7 +26,7 @@ export class MyHeroesComponent implements OnInit {
       this.currentUser = user;
       this.heroes = this.heroService.getHeroesByUserId(this.currentUser.uid);
     });
-
   }
+
 
 }

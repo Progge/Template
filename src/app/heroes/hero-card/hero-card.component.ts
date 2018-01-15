@@ -32,13 +32,9 @@ export class HeroCardComponent implements OnInit {
         this.canEdit = true;
       }
     });
-
-    // this.userService.getUserById(this.hero.authorUserId).subscribe(res => {
-    //   this.author = res;
-    // });
-    // this.userService.currentUser.subscribe(user => {
-    //   this.currentUser = user;
-    // });
   }
 
+  onEditClick() {
+    this.router.navigate(['hero-form/' + this.hero.id]);
+  }
 }

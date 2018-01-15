@@ -7,7 +7,7 @@ import {HeroComponent} from './hero/hero.component';
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
-  { path: 'hero-form', component: HeroFormComponent},
+  { path: 'hero-form/ :id', component: HeroFormComponent},
   { path: 'upload-heroes', component: UploadHeroesComponent},
   {path: 'hero/:id', component: HeroComponent},
 ];

@@ -15,9 +15,9 @@
   <mat-card-actions style="display:flex;">
     <button mat-button><mat-icon style="color:red;">favorite</mat-icon> LIKE</button>
     <span class="fill-remaining-space"></span>
-    <div *ngIf="canEdit">
-        <button mat-button><mat-icon>edit</mat-icon></button>
-    </div>
+    <button  *ngIf="canEdit" mat-icon-button>
+      <mat-icon (click)="onEditClick()">edit</mat-icon>
+    </button>
     <span class="fill-remaining-space"></span>
     <button mat-button><mat-icon>share</mat-icon> SHARE</button>
   </mat-card-actions>

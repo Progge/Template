@@ -57,7 +57,8 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
     HeroFormService
   ],
   exports: [
-    HeroListComponent
+    HeroListComponent,
+    HeroCardComponent
   ]
 })
 export class HeroesModule { }
