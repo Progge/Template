@@ -9,7 +9,8 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule, MatSelectModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
+  MatSelectModule,
   MatSliderModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
@@ -21,6 +22,8 @@ import {SharedModule} from '../shared/shared.module';
 import {ImageCropperModule} from 'ng2-img-cropper';
 import {FileDropModule} from 'angular2-file-drop';
 import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
+import { HeroDeleteDialogComponent } from './hero-delete-dialog/hero-delete-dialog.component';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   imports: [
@@ -37,11 +40,13 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
     MatButtonModule,
     MatSliderModule,
     MatSelectModule,
+    MatDialogModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   declarations: [
     HeroesComponent,
@@ -50,7 +55,11 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
     HeroCardComponent,
     HeroFormComponent,
     UploadHeroesComponent,
-    HeroFavoriteComponent
+    HeroFavoriteComponent,
+    HeroDeleteDialogComponent
+  ],
+  entryComponents: [
+    HeroDeleteDialogComponent
   ],
   providers: [
     HeroService,
@@ -58,7 +67,7 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
   ],
   exports: [
     HeroListComponent,
-    HeroCardComponent
+    HeroCardComponent,
   ]
 })
 export class HeroesModule { }

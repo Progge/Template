@@ -18,6 +18,9 @@
     <button  *ngIf="canEdit" mat-icon-button>
       <mat-icon (click)="onEditClick()">edit</mat-icon>
     </button>
+    <button  *ngIf="canEdit" mat-icon-button>
+      <mat-icon (click)="onDeleteClick()">delete</mat-icon>
+    </button>
     <span class="fill-remaining-space"></span>
     <button mat-button><mat-icon>share</mat-icon> SHARE</button>
   </mat-card-actions>

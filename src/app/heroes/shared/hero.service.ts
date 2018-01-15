@@ -25,4 +25,16 @@ export class HeroService {
     return this.db.getItems(this.PATH, ref => ref.where('authorUserId', '==', authorUserId));
   }
 
+  updateHero(hero: Hero, id?: string ) {
+    if (id) {
+      return this.db.updateItem(this.PATH, id, hero);
+    }else {
+      return this.db.updateItem(this.PATH, hero.id, hero);
+    }
+  }
+
+  deleteHero(id: string) {
+    return this.db.deleteItem(this.PATH, id);
+  }
+
 }

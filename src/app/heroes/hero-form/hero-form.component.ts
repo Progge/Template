@@ -27,6 +27,9 @@ export class HeroFormComponent implements OnInit {
   exampleOptions= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   imgFolder = 'images';
 
+  heroId: string;
+  isUpdate= false;
+
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
 
@@ -51,20 +54,17 @@ export class HeroFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    this.heroService.getHero(id).subscribe(hero => {
-      this.model = hero;
-      // this.ImageObject.image = hero.image;
-      // const image = new Image();
-      // image.crossOrigin = 'Anonymous';
-      // image.src = hero.image;
-      // this.cropper.setImage(image);
-      // console.log(image);
-      this.uploadService.getImg(hero.image).then(img => {
-        // console.log(img);
-        this.onFileDrop(img);
+    if (this.route.snapshot.params['id'] != null) {
+      this.isUpdate = true;
+      this.heroId = this.route.snapshot.params['id'];
+      this.heroService.getHero(this.heroId).subscribe(hero => {
+        this.model = hero;
+        this.model.id = this.heroId;
+        this.uploadService.getImg(hero.image).then(img => {
+          this.setImgFromBase64(img);
+        });
       });
-    });
+    }
     if (this.userService.isLoggedIn) {
       this.userService.user.subscribe(user => {
         this.model.authorUserId = user.uid;
@@ -81,7 +81,7 @@ export class HeroFormComponent implements OnInit {
     this.fileIsOver = fileIsOver;
   }
 
-  public onFileDrop(base64String: string): void {
+  public setImgFromBase64(base64String: string): void {
     const image = new Image();
     image.src = base64String;
     this.cropper.setImage(image);
@@ -104,15 +104,22 @@ export class HeroFormComponent implements OnInit {
     const upload = this.uploadService.uploadBase64Image(this.ImageObject.image, this.imgFolder,  this.model.name);
     upload.then(res => {
       this.model.image = res.downloadURL;
-      this.createHero();
+      this.submitHero();
     });
   }
 
-  private createHero() {
-    this.heroService.createHero(this.model).then(res => {
-      this.snackBarService.showSnackBar('success', 'custom', 'Hero created!');
-      this.router.navigate(['heroes']);
-    });
+  private submitHero() {
+    if (!this.isUpdate) {
+      this.heroService.createHero(this.model).then(res => {
+        this.snackBarService.showSnackBar('success', 'custom', 'Hero created!');
+        this.router.navigate(['heroes']);
+      });
+    }else {
+      this.heroService.updateHero(this.model).then(res => {
+        this.snackBarService.showSnackBar('success', 'custom', 'Hero updated!');
+        this.router.navigate(['heroes']);
+      });
+    }
   }
 
 

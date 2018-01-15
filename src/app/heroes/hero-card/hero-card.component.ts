@@ -5,6 +5,8 @@ import {UserService} from '../../user/shared/user.service';
 import {User} from '../../user/shared/user.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/zip';
+import {MatDialog} from '@angular/material';
+import {HeroDeleteDialogComponent} from '../hero-delete-dialog/hero-delete-dialog.component';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class HeroCardComponent implements OnInit {
   currentUser: User;
   canEdit= false;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 
   goToHero(id) {
     this.router.navigate(['hero/' + id]);
@@ -36,5 +38,11 @@ export class HeroCardComponent implements OnInit {
 
   onEditClick() {
     this.router.navigate(['hero-form/' + this.hero.id]);
+  }
+
+  onDeleteClick() {
+    const dialogRef = this.dialog.open(HeroDeleteDialogComponent, {
+      data: { hero: this.hero }
+    });
   }
 }

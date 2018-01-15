@@ -29,7 +29,7 @@
               [ngClass]="{'lower-opacity': fileIsOver}"
               [options]="fileDropOptions"
               (fileOver)="fileOver($event)"
-              (onFileDrop)="onFileDrop($event)"
+              (onFileDrop)="setImgFromBase64($event)"
               onclick="document.getElementById('image').click()"
       >
         <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
