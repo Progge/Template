@@ -1,12 +1,15 @@
 <mat-card class="hero-card">
   <mat-card-header>
-    <img mat-card-avatar src="{{ hero.image }}">
+    <img *ngIf="author;else heroProfileImage" mat-card-avatar src="{{ author.photoURL }}">
+    <ng-template #heroProfileImage>
+      <img mat-card-avatar src="{{ hero.image }}">
+    </ng-template>
     <mat-card-title (click)="goToHero(hero.id)">{{hero.name}}</mat-card-title>
     <mat-card-subtitle>{{hero.slogan}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="div-square">
-        <img mat-card-image src="{{ hero.image }}" (click)="goToHero(hero.id)">
+      <img mat-card-image src="{{ hero.image }}" (click)="goToHero(hero.id)">
     </div>
   </mat-card-content>
   <mat-card-actions style="display:flex;">

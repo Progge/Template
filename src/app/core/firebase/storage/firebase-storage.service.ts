@@ -3,6 +3,9 @@ import * as firebase from 'firebase';
 import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 import { Upload } from './upload.model';
 import UploadTask = firebase.storage.UploadTask;
+import {Observable} from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
+import {observable} from 'rxjs/symbol/observable';
 
 @Injectable()
 export class FirebaseStorageService {
@@ -44,7 +47,7 @@ export class FirebaseStorageService {
         // error
         console.log(error);
       },
-      () => {
+      (): any => {
         // complete
         upload.name = name;
         upload.url = uploadTask.snapshot.downloadURL;

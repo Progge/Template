@@ -9,29 +9,39 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule, MatSelectModule,
+  MatSliderModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
-import {AgmCoreModule} from '@agm/core';
-import {environment} from '../../environments/environment';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
+import {HeroFormService} from './hero-form/hero-form.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
+import {ImageCropperModule} from 'ng2-img-cropper';
+import {FileDropModule} from 'angular2-file-drop';
 import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey
-    }),
+    HttpClientModule,
+    FormsModule,
     FlexLayoutModule,
+    FileDropModule,
     HeroesRoutingModule,
+    ImageCropperModule,
+    MatListModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatSliderModule,
+    MatSelectModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    SharedModule
   ],
   declarations: [
     HeroesComponent,
@@ -44,6 +54,7 @@ import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
   ],
   providers: [
     HeroService,
+    HeroFormService
   ]
 })
 export class HeroesModule { }

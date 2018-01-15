@@ -7,4 +7,6 @@ export interface Hero {
   speed: number;
   strength: number;
   slogan: string;
+  formattedAddress: string;
+  authorUserId: string;
 }
