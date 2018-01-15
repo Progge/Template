@@ -54,6 +54,7 @@ export class UserService {
   loginGoogle() {
     this.auth.loginGoogle()
       .then((credential) => {
+        console.log(credential);
         this.updateUser(credential.user);
         this.setUser();
       });
@@ -81,6 +82,10 @@ export class UserService {
       email: user.email,
       emailVerified: null,
       photoURL: user.photoURL,
+      providerId: user.providerData[0].providerId,
+      providerUserId: user.providerData[0].uid,
+      createdAt: user.metadata.creationTime,
+      lastLoginAt: user.metadata.lastSignInTime
     };
     data = this.cleanData(data);
     this.db.upsertItem(this.PATH, user.uid, data);
