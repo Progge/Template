@@ -55,4 +55,41 @@ export class FirebaseStorageService {
       });
     return upload;
   }
+
+  // Takes an ImgUrl and Returns an Promise with the base64String as content.
+  getImg(url: string): Promise<string> {
+    return new Promise(function (resolve, reject) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+
+      xhr.responseType = 'arraybuffer';
+      let base64String: string;
+      xhr.onload = function(e) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          const uInt8Array = new Uint8Array(xhr.response);
+          let i = uInt8Array.length;
+          const binaryString = new Array(i);
+          while (i--) {
+            binaryString[i] = String.fromCharCode(uInt8Array[i]);
+          }
+          const data = binaryString.join('');
+          base64String = 'data:image/png;base64,' + btoa(data);
+          resolve(base64String);
+        }else {
+          reject({
+            status: xhr.status,
+            statusText: xhr.statusText
+          });
+        }
+      };
+      xhr.onerror = function () {
+        reject({
+          status: xhr.status,
+          statusText: xhr.statusText
+        });
+      };
+      xhr.send();
+    });
+  }
+
 }

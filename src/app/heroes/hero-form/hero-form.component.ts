@@ -7,7 +7,7 @@ import {Hero} from '../shared/hero.model';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
 import {HeroService} from '../shared/hero.service';
 import {UserService} from '../../user/shared/user.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SnackBarService} from '../../shared/feedback/snackbar.service';
 import {User} from '../../user/shared/user.model';
 
@@ -36,7 +36,8 @@ export class HeroFormComponent implements OnInit {
   };
 
   constructor(private uploadService: FirebaseStorageService, private heroService: HeroService, private userService: UserService,
-              private router: Router, private snackBarService: SnackBarService) {
+              private router: Router, private snackBarService: SnackBarService, private route: ActivatedRoute
+  ) {
     /*Settings for the image cropper*/
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.preserveSize = true;
@@ -50,6 +51,20 @@ export class HeroFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+    this.heroService.getHero(id).subscribe(hero => {
+      this.model = hero;
+      // this.ImageObject.image = hero.image;
+      // const image = new Image();
+      // image.crossOrigin = 'Anonymous';
+      // image.src = hero.image;
+      // this.cropper.setImage(image);
+      // console.log(image);
+      this.uploadService.getImg(hero.image).then(img => {
+        // console.log(img);
+        this.onFileDrop(img);
+      });
+    });
     if (this.userService.isLoggedIn) {
       this.userService.user.subscribe(user => {
         this.model.authorUserId = user.uid;
@@ -99,4 +114,6 @@ export class HeroFormComponent implements OnInit {
       this.router.navigate(['heroes']);
     });
   }
+
+
 }
