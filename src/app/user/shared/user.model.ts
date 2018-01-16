@@ -5,6 +5,8 @@ export interface User {
   email: string;
   emailVerified: boolean;
   photoURL: string;
-  // createdAt: string;
-  // lastLoginAt: string;
+  providerUserId: string;
+  providerId: string;
+  createdAt: string;
+  lastLoginAt: string;
 }

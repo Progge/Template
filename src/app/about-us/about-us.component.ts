@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutUsService } from './shared/about-us.service';
+import {Employee} from './shared/employee.model';
 
 @Component({
   selector: 'app-about-us',
@@ -8,12 +9,12 @@ import { AboutUsService } from './shared/about-us.service';
 })
 export class AboutUsComponent implements OnInit {
 
-  proggeAbWorkers: any;
+  employees: Employee[];
 
   constructor(private aboutUsService: AboutUsService) {}
 
   ngOnInit() {
-    this.proggeAbWorkers = this.aboutUsService.getWorkers();
+    this.employees = this.aboutUsService.getEmployees();
   }
 
 }
