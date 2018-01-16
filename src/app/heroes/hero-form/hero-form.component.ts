@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, NgZone, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {HeroFormService} from './hero-form.service';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
@@ -10,13 +10,14 @@ import {UserService} from '../../user/shared/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SnackBarService} from '../../shared/feedback/snackbar.service';
 import {User} from '../../user/shared/user.model';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-hero-form',
   templateUrl: './hero-form.component.html',
   styleUrls: ['./hero-form.component.css']
 })
-export class HeroFormComponent implements OnInit {
+export class HeroFormComponent implements OnInit, OnDestroy {
 
   ImageObject: any;
   cropperSettings: CropperSettings;
@@ -27,8 +28,12 @@ export class HeroFormComponent implements OnInit {
   exampleOptions= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   imgFolder = 'images';
 
+  heroSub: Subscription;
+
   heroId: string;
   isUpdate= false;
+
+  isLoading = false;
 
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
@@ -57,7 +62,7 @@ export class HeroFormComponent implements OnInit {
     if (this.route.snapshot.params['id'] != null) {
       this.isUpdate = true;
       this.heroId = this.route.snapshot.params['id'];
-      this.heroService.getHero(this.heroId).subscribe(hero => {
+      this.heroSub = this.heroService.getHero(this.heroId).subscribe(hero => {
         this.model = hero;
         this.model.id = this.heroId;
         this.uploadService.getImg(hero.image).then(img => {
@@ -109,6 +114,7 @@ export class HeroFormComponent implements OnInit {
   }
 
   private submitHero() {
+    this.isLoading = true;
     if (!this.isUpdate) {
       this.heroService.createHero(this.model).then(res => {
         this.snackBarService.showSnackBar('success', 'custom', 'Hero created!');
@@ -119,6 +125,12 @@ export class HeroFormComponent implements OnInit {
         this.snackBarService.showSnackBar('success', 'custom', 'Hero updated!');
         this.router.navigate(['heroes']);
       });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.heroSub) {
+      this.heroSub.unsubscribe();
     }
   }
 

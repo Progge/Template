@@ -20,10 +20,13 @@ export class HeroDeleteDialogComponent implements OnInit {
   }
 
   deleteHero() {
-    console.log(this.data.hero.id);
     this.isDeleting = true;
-    this.heroService.deleteHero(this.data.hero.id).then( res =>{
-        this.dialogRef.close();
+    this.heroService.deleteHero(this.data.hero.id).then( res => {
+        this.dialogRef.close(true);
     });
+  }
+
+  noDelete() {
+    this.dialogRef.close(false);
   }
 }

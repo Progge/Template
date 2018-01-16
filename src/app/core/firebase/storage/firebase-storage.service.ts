@@ -92,4 +92,8 @@ export class FirebaseStorageService {
     });
   }
 
+  deleteFile(url: string): Promise<any> {
+    return firebase.storage().refFromURL(url).delete();
+  }
+
 }
