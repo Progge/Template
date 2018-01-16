@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilePageComponent } from './profile-page.component';
+import { HeroDeleteDialogComponent } from './hero-delete-dialog.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfilePageComponent;
-  let fixture: ComponentFixture<ProfilePageComponent>;
+describe('HeroDeleteDialogComponent', () => {
+  let component: HeroDeleteDialogComponent;
+  let fixture: ComponentFixture<HeroDeleteDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilePageComponent ]
+      declarations: [ HeroDeleteDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfilePageComponent);
+    fixture = TestBed.createComponent(HeroDeleteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
