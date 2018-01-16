@@ -17,3 +17,4 @@ export class HeroListComponent implements OnInit {
     this.heroes = this.heroService.getHeroes();
   }
 }
+

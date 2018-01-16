@@ -68,8 +68,8 @@ export class UserService {
         console.log(credential);
         this.updateUser(credential.user);
         this.setUser();
+        this.snackBarService.showSnackBar('success', 'login');
       });
-    this.snackBarService.showSnackBar('success', 'login');
   }
 
   signUp(phone: string, email: string, password: string, repeat: string) {
