@@ -1,27 +1,36 @@
 import { Injectable } from '@angular/core';
+import {Employee} from './employee.model';
 
 @Injectable()
 export class AboutUsService {
-  proggeAbWorkers = [
+  proggeAbWorkers: Employee[] = [
     {
-      name : 'Elvin',
-      surname : 'Granat',
-      imageURL : 'https://media.licdn.com/media/AAEAAQAAAAAAAAliAAAAJGMxN2U4NzA0LTUzMjEtNDk1NC04NWFlLTU1ZjU5ZjE5YzY0Nw.jpg'
+      firstName : 'Elvin',
+      lastName : 'Granat',
+      imageUrl: 'http://graph.facebook.com/' + 677603768 + '/picture?type=large',
+      role: 'Developer',
+      linkedinUrl: 'https://www.linkedin.com/in/elvin-granat-772461a8/',
+      githubUrl: 'https://github.com/vonElfvin',
     },
     {
-      name : 'Oscar',
-      surname : 'Ek',
-      imageURL : 'https://media.licdn.com/media/AAEAAQAAAAAAAAUXAAAAJGQ2YzZjZmNhLWJlYWUtNDA5ZS1hZWVkLTUxYzA3MGI4NzA3Ng.jpg'
+      firstName : 'Oscar',
+      lastName : 'Ek',
+      imageUrl : 'http://graph.facebook.com/' + 100000267404431 + '/picture?type=large',
+      role: 'Developer',
+      linkedinUrl: 'https://www.linkedin.com/in/oscar-ek-426241103/',
+      githubUrl: 'https://github.com/ProffOak',
     },
     {
-      name : 'Linus',
-      surname : 'Falk',
-      imageURL : 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAAweAAAAJGYzMzViNGIxLTUyZjctNDU3Ni' +
-      '04M2FhLWQ2MmQxZmIwNmVhNg.jpg'
+      firstName : 'Linus',
+      lastName : 'Falk',
+      imageUrl : 'http://graph.facebook.com/' + 1677080752 + '/picture?type=large',
+      role: 'Developer',
+      linkedinUrl: 'https://www.linkedin.com/in/linus-falk-5b96ab141/',
+      githubUrl: 'https://github.com/falklinus',
     }
   ];
   constructor() {}
-  getWorkers(){
+  getEmployees(): Employee[] {
     return this.proggeAbWorkers;
   }
 

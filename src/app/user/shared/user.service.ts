@@ -25,9 +25,6 @@ export class UserService {
   }
 
   get currentUser(): Observable<User> {
-    this.user.subscribe(res => {
-      console.log(res);
-    });
     return this.user;
   }
 
@@ -68,8 +65,8 @@ export class UserService {
         console.log(credential);
         this.updateUser(credential.user);
         this.setUser();
+        this.snackBarService.showSnackBar('success', 'login');
       });
-    this.snackBarService.showSnackBar('success', 'login');
   }
 
   signUp(phone: string, email: string, password: string, repeat: string) {
@@ -117,4 +114,6 @@ export class UserService {
         }
       });
   }
+
+
 }

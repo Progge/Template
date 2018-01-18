@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from './profile-page.component';
-import {MatCardModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatTabsModule} from '@angular/material';
 import { ProfileComponent } from './profile/profile.component';
-import { HeroesComponent } from './heroes/heroes.component';
 import { SettingsComponent } from './settings/settings.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {HeroesModule} from '../../heroes/heroes.module';
+import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule,
     MatTabsModule,
     MatCardModule,
+    MatButtonModule,
+    HeroesModule
   ],
   declarations: [
     ProfilePageComponent,
     ProfileComponent,
-    HeroesComponent,
     SettingsComponent,
+    MyHeroesComponent,
   ]
 })
 export class ProfileModule { }

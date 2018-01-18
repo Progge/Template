@@ -38,10 +38,22 @@
           <p>Price: $<b>{{hero.price}}/h</b></p>
         </div>
 
+        <!--Address-->
+        <div class="info-row" fxLayout="row">
+          <mat-icon>home</mat-icon>
+          <p>Address: <b>{{hero.formattedAddress}}</b></p>
+        </div>
+
 
       </mat-card-content>
       <mat-card-footer id="hero-footer">
         <mat-icon>favorite_border</mat-icon>
+        <button  *ngIf="canEdit" mat-icon-button>
+          <mat-icon (click)="onEditClick()">edit</mat-icon>
+        </button>
+        <button  *ngIf="canEdit" mat-icon-button>
+          <mat-icon (click)="onDeleteClick()">delete</mat-icon>
+        </button>
       </mat-card-footer>
     </div>
   </div>

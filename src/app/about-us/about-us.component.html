@@ -1,6 +1,5 @@
-<ul class="list-group">
-  <li *ngFor="let worker of proggeAbWorkers" class="list-group-item">
-    <img src='{{ worker.imageURL }}' class="workerImage">
-    {{ worker.name }}
-  </li>
-</ul>
+<div fxLayout fxLayoutWrap="wrap" style="max-width:800px; margin: 15px auto;">
+  <div fxFlex="33" fxFlex.xs="100" *ngFor="let employee of (employees)">
+    <app-employee-card [employee]="employee"></app-employee-card>
+  </div>
+</div>
