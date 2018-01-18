@@ -20,6 +20,17 @@ export class UserService {
     this.setUser();
   }
 
+  getUserById(uid: string): Observable<User> {
+    return this.db.getItem(this.PATH, uid);
+  }
+
+  get currentUser(): Observable<User> {
+    this.user.subscribe(res => {
+      console.log(res);
+    });
+    return this.user;
+  }
+
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn();
   }
