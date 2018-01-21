@@ -1,46 +1,57 @@
-<mat-card>
-  <mat-card-content>
-    <h2>Heroes Form</h2>
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" >
-      <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required #name="ngModel">
-      </mat-form-field>
-      <mat-form-field>
-        <input name="age" [(ngModel)]="model.age" class="remove-spinner" matInput placeholder="Age" type="number">
-      </mat-form-field>
-      <mat-form-field>
-        <textarea matInput name="slogan" [(ngModel)]="model.slogan" placeholder="Write a slogan"></textarea>
-      </mat-form-field>
-      <h4>Speed: {{model.speed}}</h4>
-      <mat-slider matInput name="speed" [max]="10" min="0" [(ngModel)]="model.speed" [thumbLabel]="true"></mat-slider>
-      <mat-form-field>
-        <mat-select name="strength" [(ngModel)]="model.strength" placeholder="Strength">
-          <mat-option *ngFor="let option of exampleOptions" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <app-maps-address name="formattedAddress" [(ngModel)]="model.formattedAddress"></app-maps-address>
-      <h4>Address: {{model.formattedAddress}}</h4>
-      <div fxLayout fxLayoutWrap="wrap">
-        <img-cropper #cropper [image]="ImageObject" [settings]="cropperSettings"></img-cropper>
+<div id="center-div" style="margin-top:25px;">
+  <mat-card>
+    <mat-card-content>
+      <h2>Heroes Form</h2>
+      <form (ngSubmit)="onSubmit()" #heroForm="ngForm" >
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required #name="ngModel">
+        </mat-form-field>
+        <mat-form-field>
+          <input name="age" [(ngModel)]="model.age" class="remove-spinner" matInput placeholder="Age" type="number">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput name="slogan" [(ngModel)]="model.slogan" placeholder="Write a slogan"></textarea>
+        </mat-form-field>
+        <h4>Speed: {{model.speed}}</h4>
         <div>
-          <img *ngIf="ImageObject.image" [src]="ImageObject.image" style="width:300px;height:300px;object-fit: cover">
+          <mat-slider matInput name="speed" [max]="10" min="0" [(ngModel)]="model.speed" [thumbLabel]="true" style="width:50%;"></mat-slider>
+          <mat-form-field style="width:49%;">
+            <mat-select name="strength" [(ngModel)]="model.strength" placeholder="Strength">
+              <mat-option *ngFor="let option of exampleOptions" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-      </div>
-      <button mat-raised-button fileDrop type="button"
-              [ngClass]="{'lower-opacity': fileIsOver}"
-              [options]="fileDropOptions"
-              (fileOver)="fileOver($event)"
-              (onFileDrop)="setImgFromBase64($event)"
-              onclick="document.getElementById('image').click()"
-      >
-        <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
-        Click or Drop file here
-      </button>
-      <button mat-button color="primary" type="submit" [disabled]="!heroForm.valid">Submit</button>
-    </form>
-  </mat-card-content>
-</mat-card>
-
+        <label><b>Price:</b></label><br><br>
+        <mat-radio-group name="price" [(ngModel)]="model.price">
+          <mat-radio-button value="100">$100</mat-radio-button>
+          <mat-radio-button value="300">$300</mat-radio-button>
+          <mat-radio-button value="500">$500</mat-radio-button>
+          <mat-radio-button value="1000">$1000</mat-radio-button>
+          <mat-radio-button value="3000">$3000</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <app-maps-address name="formattedAddress" [(ngModel)]="model.formattedAddress"></app-maps-address>
+        <h4>Address: {{model.formattedAddress}}</h4>
+        <div fxLayout fxLayoutWrap="wrap">
+          <img-cropper #cropper [image]="ImageObject" [settings]="cropperSettings"></img-cropper>
+          <div>
+            <img *ngIf="ImageObject.image" [src]="ImageObject.image" style="width:300px;height:300px;object-fit: cover">
+          </div>
+        </div>
+        <button mat-raised-button fileDrop type="button"
+                [ngClass]="{'lower-opacity': fileIsOver}"
+                [options]="fileDropOptions"
+                (fileOver)="fileOver($event)"
+                (onFileDrop)="setImgFromBase64($event)"
+                onclick="document.getElementById('image').click()"
+        >
+          <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
+          Click or Drop file here
+        </button>
+        <button mat-button color="primary" type="submit" [disabled]="!heroForm.valid">Submit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -69,6 +69,8 @@ export class HeroFormComponent implements OnInit, OnDestroy {
           this.setImgFromBase64(img);
         });
       });
+    }else{
+      this.model.price = '100';
     }
     if (this.userService.isLoggedIn) {
       this.userService.user.subscribe(user => {

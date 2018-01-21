@@ -10,6 +10,7 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
   MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
+  MatRadioModule,
   MatSelectModule,
   MatSliderModule,
 } from '@angular/material';
@@ -41,6 +42,7 @@ import {CoreModule} from '../core/core.module';
     MatSliderModule,
     MatSelectModule,
     MatDialogModule,
+    MatRadioModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,

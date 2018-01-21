@@ -9,4 +9,5 @@ export interface Hero {
   slogan: string;
   formattedAddress: string;
   authorUserId: string;
+  price: string;
 }

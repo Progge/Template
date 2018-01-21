@@ -3,3 +3,9 @@
   color: darkturquoise;
 
 }
+
+mat-radio-button{
+  width: 19%;
+  padding:0;
+  margin:0;
+}
