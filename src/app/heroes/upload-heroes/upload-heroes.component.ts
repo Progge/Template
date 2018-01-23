@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FirebaseStorageService} from '../../core/firebase/storage/firebase-storage.service';
+import {Ng2ImgMaxService} from 'ng2-img-max';
 
 @Component({
   selector: 'app-upload-heroes',
@@ -11,7 +12,7 @@ export class UploadHeroesComponent {
   selectedFiles: FileList;
   progresses: {name: string, percentage: number}[];
 
-  constructor(private uploadService: FirebaseStorageService) { }
+  constructor(private uploadService: FirebaseStorageService, private ng2ImgMaxService: Ng2ImgMaxService) { }
 
   selectFiles(event) {
     this.selectedFiles = event.target.files;
@@ -19,6 +20,12 @@ export class UploadHeroesComponent {
     Array.prototype.forEach.call(this.selectedFiles, (file) => {
       const progress = {name: file.name, percentage: 0};
       this.progresses.push(progress);
+    });
+    const fileArr = Array.from(this.selectedFiles);
+    this.ng2ImgMaxService.compress(fileArr, 0.3).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error);
     });
   }
 

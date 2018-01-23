@@ -25,6 +25,7 @@ import {FileDropModule} from 'angular2-file-drop';
 import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
 import { HeroDeleteDialogComponent } from './hero-delete-dialog/hero-delete-dialog.component';
 import {CoreModule} from '../core/core.module';
+import {Ng2ImgMaxModule} from 'ng2-img-max';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {CoreModule} from '../core/core.module';
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    Ng2ImgMaxModule,
     SharedModule,
     CoreModule
   ],
