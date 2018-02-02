@@ -12,7 +12,7 @@ import {
   MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
   MatRadioModule,
   MatSelectModule,
-  MatSliderModule,
+  MatSliderModule, MatSlideToggleModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
@@ -25,6 +25,7 @@ import {FileDropModule} from 'angular2-file-drop';
 import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
 import { HeroDeleteDialogComponent } from './hero-delete-dialog/hero-delete-dialog.component';
 import {CoreModule} from '../core/core.module';
+import {NgxPicaModule} from 'ngx-pica';
 
 @NgModule({
   imports: [
@@ -43,10 +44,12 @@ import {CoreModule} from '../core/core.module';
     MatSelectModule,
     MatDialogModule,
     MatRadioModule,
+    MatSlideToggleModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    NgxPicaModule,
     SharedModule,
     CoreModule
   ],
