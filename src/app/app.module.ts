@@ -8,6 +8,9 @@ import { HeroesModule } from './heroes/heroes.module';
 import { LoginsModule } from './logins/logins.module';
 import { AboutUsModule } from './about-us/about-us.module';
 import {ProfileModule} from './profile/profile.module';
+import {environment} from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 
 
@@ -18,6 +21,7 @@ import {ProfileModule} from './profile/profile.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     CoreModule,
     HeroesModule,
     LoginsModule,
