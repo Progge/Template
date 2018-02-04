@@ -1,0 +1,23 @@
+<span *ngIf="user">
+  <div fxLayout fxLayoutWrap="wrap">
+    <div fxFlex="50">
+      <div class="div-square">
+        <span *ngIf="user.photoURL">
+          <img src="https://graph.facebook.com/10155940198723769/picture?height=500" style="position: absolute; width:100%;">
+        </span>
+        <span *ngIf="!user.photoURL">
+          <div style="background-color: #999; opacity:0.2; width: 100%; position: absolute; padding-bottom: 100%;">
+            LADDA UPP PROFILBILD DÅ <br> GÖR DE <br> <br> SKA DU BELDRA MIG
+          </div>
+        </span>
+      </div>
+    </div>
+    <div fxFlex="50" style="padding-left:10px;">
+      Name: {{user.displayName}}
+      <br> Email: {{user.email}}
+      <br> Phone: {{user.phoneNumber}}
+      <br>
+        <!--<button mat-button>Edit</button>-->
+    </div>
+  </div>
+</span>

@@ -1,5 +1,5 @@
-<div fxLayout fxLayout.xs="column" fxLayoutWrap="wrap" style="padding: 5px;">
-  <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" *ngFor="let hero of (heroes | async)">
+<div fxLayout fxLayoutWrap="wrap" style="padding: 5px;">
+  <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let hero of (heroes | async)">
     <app-hero-card [hero]="hero"></app-hero-card>
   </div>
 </div>

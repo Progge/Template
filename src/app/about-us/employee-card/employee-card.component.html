@@ -1,0 +1,17 @@
+<div style="padding:7.5px;">
+  <img src="{{employee.imageUrl}}">
+  <p class="mat-h1">{{employee.firstName}} {{employee.lastName}}</p>
+  <p class="mat-h3">{{employee.role}}</p>
+  <div class="buttons-div">
+    <a href="{{employee.linkedinUrl}}" target="_blank">
+      <button mat-icon-button>
+        <mat-icon svgIcon="linkedin" class="size-40"></mat-icon>
+      </button>
+    </a>
+    <a href="{{employee.githubUrl}}" target="_blank">
+      <button mat-icon-button>
+        <mat-icon svgIcon="github" class="size-40"></mat-icon>
+      </button>
+    </a>
+  </div>
+</div>

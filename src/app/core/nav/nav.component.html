@@ -16,7 +16,7 @@
         Heroes
       </button>
       <button mat-button routerLink="upload-heroes">
-        Upload Heroes
+        Upload Multiple Files
       </button>
       <button mat-button routerLink="about-us">
         About Us
@@ -30,15 +30,21 @@
     <div fxShow="false" fxShow.gt-sm>
       <button
         mat-button
-        *ngIf="!(firebaseAuthService.afAuth.authState | async)"
-        routerLink="login">
-        Login
+        *ngIf="!(userService.isLoggedIn)"
+        routerLink="sign-in">
+        Sign In
       </button>
       <button
         mat-button
-        *ngIf="(firebaseAuthService.afAuth.authState | async)"
-        (click)="firebaseAuthService.logout()">
-        Logout
+        *ngIf="(userService.isLoggedIn)"
+        routerLink="profile">
+        Profile
+      </button>
+      <button
+        mat-button
+        *ngIf="(userService.isLoggedIn)"
+        (click)="userService.logout()">
+        Sign Out
       </button>
     </div>
 
@@ -55,27 +61,44 @@
 <mat-sidenav-container fullscreen>
 
   <!--Sidenav Content-->
-  <mat-sidenav #sidenav [mode]="'push'" style="float: left;">
+  <mat-sidenav #sidenav [mode]="'over'">
+    <button mat-button routerLink="">
+      <mat-icon class="sidenav-icon">home</mat-icon>
+      Home
+    </button>
     <button mat-button routerLink="heroes">
+      <mat-icon class="sidenav-icon">group</mat-icon>
       Heroes
     </button>
     <button mat-button routerLink="upload-heroes">
+      <mat-icon class="sidenav-icon">file_upload</mat-icon>
       Upload Heroes
     </button>
     <button mat-button routerLink="about-us">
+      <mat-icon class="sidenav-icon">info</mat-icon>
       About Us
     </button>
+    <hr>
     <button
       mat-button
-      *ngIf="!(firebaseAuthService.afAuth.authState | async)"
-      routerLink="login">
-      Login
+      *ngIf="!(userService.isLoggedIn)"
+      routerLink="sign-in">
+      <mat-icon svgIcon="sign-in" class="sidenav-icon"></mat-icon>
+      Sign In
     </button>
     <button
       mat-button
-      *ngIf="(firebaseAuthService.afAuth.authState | async)"
-      (click)="firebaseAuthService.logout()">
-      Logout
+      *ngIf="(userService.isLoggedIn)"
+      routerLink="profile">
+      <mat-icon class="sidenav-icon">person</mat-icon>
+      Profile
+    </button>
+    <button
+      mat-button
+      *ngIf="(userService.isLoggedIn)"
+      (click)="userService.logout()">
+      <mat-icon svgIcon="sign-out" class="sidenav-icon"></mat-icon>
+      Sign Out
     </button>
   </mat-sidenav>
   <mat-sidenav-content>

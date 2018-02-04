@@ -1,0 +1,44 @@
+#center-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 40px 0;
+}
+
+mat-card {
+  padding: 16px;
+}
+
+/deep/ .mat-tab-label{
+  width: 50% !important;
+}
+
+:host >>> .login-button{
+  color: white;
+  width: 100%;
+  padding: 7px;
+}
+
+:host >>> mat-input-container {
+  display: block;
+}
+
+.divider {
+  width:100%;
+  text-align:center;
+  color: black;
+  margin: 20px 0;
+}
+
+.divider hr {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/deep/ .mat-tab-label:focus{
+  background-color: #ffffff !important;
+}
+
+/deep/ .mat-tab-body-content {
+  overflow: hidden!important;
+}

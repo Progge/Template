@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { LoginsComponent } from './logins/logins.component';
+import { LoginComponent } from './user/login/login.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginsComponent,
+    component: LoginComponent,
   },
   {
     path: 'about-us',

@@ -1,12 +1,13 @@
 <div id="upload-div">
   <mat-card>
     <button mat-raised-button color="accent" onclick="document.getElementById('image').click()">
-      Select Heroes
+      Select Files
       <input id="image" type="file" multiple style="display:none;" accept="image/*" (change)="selectFiles($event)">
     </button>
-
-    <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
-    <div *ngFor="let progress of progresses" style="margin-top: 10px;">
+    <button mat-raised-button color="primary" [disabled]="resizeInProgress" (click)="upload()">Upload</button>
+    <mat-slide-toggle (change)="onEnableResizeToggle($event)">Enable resize</mat-slide-toggle>
+    <div *ngIf="!resizeInProgress">
+    <div  *ngFor="let progress of progresses" style="margin-top: 10px;">
       <span>{{progress.name}}</span>
       <mat-progress-bar
         color="primary"
@@ -14,5 +15,7 @@
         [value]="progress.percentage">
       </mat-progress-bar>
     </div>
+    </div>
+    <app-spinner *ngIf="resizeInProgress" style="margin: 0 auto"></app-spinner>
   </mat-card>
 </div>

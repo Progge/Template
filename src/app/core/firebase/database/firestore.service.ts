@@ -6,24 +6,32 @@ import {
   QueryFn
 } from 'angularfire2/firestore';
 import { Observable} from 'rxjs/Observable';
+import * as firebase from 'firebase';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export abstract class FirestoreService<ItemClass> {
 
-  abstract readonly COLLECTION_PATH: string;
-
   constructor(private afs: AngularFirestore) {}
 
-  doc$(id: string): AngularFirestoreDocument<ItemClass> {
-    return this.afs.doc(`${this.COLLECTION_PATH}/${id}`);
+ /* addItem(path: string, item: ItemClass): Promise<DocumentReference> {
+    return this.afs.collection(path).add(<Object> item);
   }
 
-  col$(queryFn?: QueryFn): AngularFirestoreCollection<ItemClass> {
-    return this.afs.collection(this.COLLECTION_PATH, queryFn);
+  addItemWithId(path: string, item: ItemClass, id: string): Promise<void> {
+    return this.afs.collection(path).doc(id).set(item);
+  }*/
+
+  doc$(path: string, id: string): AngularFirestoreDocument<ItemClass> {
+    return this.afs.doc(`${path}/${id}`);
   }
 
-  colWithIds$(queryFn?: QueryFn): Observable<ItemClass[]> {
-    return this.col$(queryFn).snapshotChanges().map(actions => {
+  col$(path: string, queryFn?: QueryFn): AngularFirestoreCollection<ItemClass> {
+    return this.afs.collection(path, queryFn);
+  }
+
+  colWithIds$(path: string, queryFn?: QueryFn): Observable<ItemClass[]> {
+    return this.col$(path, queryFn).snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as ItemClass;
         data['id'] = a.payload.doc.id;

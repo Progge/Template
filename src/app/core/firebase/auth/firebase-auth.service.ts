@@ -1,61 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {SnackBarService} from '../../../shared/feedback/snackbar.service';
 
 @Injectable()
 export class FirebaseAuthService {
 
-  constructor(public afAuth: AngularFireAuth, private snackBarService: SnackBarService) {
+  private auth;
+
+  constructor(public afAuth: AngularFireAuth) {
+    this.auth = afAuth.auth;
   }
 
-  loginFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSuccessSnackBar('Du är nu inloggad med Facebook.');
-        console.log(success);
-      }).catch((error) => {
-        this.snackBarService.showErrorSnackBar('Något gick snett vid inloggning med Facebook.');
-        console.log(error);
-    });
+  isLoggedIn(): boolean {
+    return !!this.auth.currentUser;
   }
 
-  loginGoogle() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((success) => {
-        this.snackBarService.showSuccessSnackBar('Du är nu inloggad med Google.');
-        console.log(success);
-      }).catch((error) => {
-      this.snackBarService.showErrorSnackBar('Något gick snett vid inloggning med Google.');
-      console.log(error);
-    });;
+  loginFacebook(): Promise<any> {
+    return this.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
-  loginEmail(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSuccessSnackBar('Du är nu inloggad med Email.');
-        console.log(success);
-      }).catch((error) => {
-        this.snackBarService.showErrorSnackBar('Något gick snett vid inloggning med Email');
-        console.log(error);
-    });
+  loginGoogle(): Promise<any> {
+    return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  signUp(email, password) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((success) => {
-        this.snackBarService.showSuccessSnackBar('Ditt nya konto har skapats.');
-        console.log(success);
-      }).catch((error) => {
-        this.snackBarService.showErrorSnackBar('Något gick snett vid skapandet av konto.');
-        console.log(error);
-    });
+  loginEmail(email, password): Promise<any> {
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  logout() {
-    this.afAuth.auth.signOut();
-    this.snackBarService.showSuccessSnackBar('Du har loggats ut.');
+  signUp(email, password): Promise<any> {
+    return this.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  logout(): Promise<any> {
+    return this.auth.signOut();
   }
 }

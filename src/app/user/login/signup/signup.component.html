@@ -1,0 +1,55 @@
+<form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+
+  <!--Email-->
+  <mat-input-container>
+    <input matInput placeholder="Email" formControlName="email" required>
+    <mat-error *ngIf="email.touched && email.hasError('required')">
+      Email is required.
+    </mat-error>
+    <mat-error *ngIf="email.touched && !email.hasError('required') && email.hasError('pattern')">
+      Incorrect email address.
+    </mat-error>
+  </mat-input-container>
+
+  <!--Phone Number-->
+  <mat-input-container>
+    <input matInput (keypress)="onlyNumbers($event)" placeholder="Phone Number" formControlName="phone" required maxlength="12">
+    <mat-error *ngIf="phone.touched && phone.hasError('required')">
+      Phone number is required.
+    </mat-error>
+    <mat-error *ngIf="phone.touched && !phone.hasError('required') && phone.hasError('pattern')">
+      That phone number is incorrect.
+    </mat-error>
+  </mat-input-container>
+
+  <!--Password-->
+  <mat-input-container>
+    <input matInput placeholder="Password" type="password" formControlName="password" required>
+    <mat-error *ngIf="password.touched && password.hasError('required')">
+      Password is required.
+    </mat-error>
+    <mat-error *ngIf="password.touched && !password.hasError('required') && password.hasError('minlength')">
+      Password must consist of at least {{ password.errors.minlength.requiredLength }} characters.
+    </mat-error>
+  </mat-input-container>
+
+  <!--Repeat Password-->
+  <mat-input-container>
+    <input matInput placeholder="Repeat Password" type="password" formControlName="repeat" required>
+    <mat-error *ngIf="repeat.touched && repeat.hasError('required')">
+      Repetition of password is required.
+    </mat-error>
+    <mat-hint style="color:red;" *ngIf="repeat.touched && signUpForm.errors && signUpForm.errors.passwordsDoNotMatch">
+      The passwords do not match.
+    </mat-hint>
+  </mat-input-container>
+
+  <!--Submit-->
+  <button
+    mat-raised-button
+    color="primary"
+    id="email"
+    class="login-button"
+    [disabled]="signUpForm.invalid"
+  >Create Account</button>
+</form>

@@ -1,3 +1,16 @@
-.card-margin{
+.hero-card{
   margin: 5px 5px 0 5px;
+}
+
+mat-card-title {
+  cursor: pointer;
+}
+
+.mat-card-image {
+  position: absolute;
+  cursor: pointer;
+}
+
+mat-card-content {
+  margin: 0 -16px;
 }

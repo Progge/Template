@@ -9,28 +9,49 @@ import { HeroComponent } from './hero/hero.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatProgressBarModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatProgressBarModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule, MatSlideToggleModule,
 } from '@angular/material';
 import { HeroFormComponent } from './hero-form/hero-form.component';
-import {AgmCoreModule} from '@agm/core';
-import {environment} from '../../environments/environment';
 import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
+import {HeroFormService} from './hero-form/hero-form.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
+import {ImageCropperModule} from 'ng2-img-cropper';
+import {FileDropModule} from 'angular2-file-drop';
+import { HeroFavoriteComponent } from './hero-favorite/hero-favorite.component';
+import { HeroDeleteDialogComponent } from './hero-delete-dialog/hero-delete-dialog.component';
+import {CoreModule} from '../core/core.module';
+import {NgxPicaModule} from 'ngx-pica';
 
 @NgModule({
   imports: [
     CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey
-    }),
+    HttpClientModule,
+    FormsModule,
     FlexLayoutModule,
+    FileDropModule,
     HeroesRoutingModule,
+    ImageCropperModule,
+    MatListModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatSlideToggleModule,
     HeroesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    NgxPicaModule,
+    SharedModule,
+    CoreModule
   ],
   declarations: [
     HeroesComponent,
@@ -38,10 +59,20 @@ import { UploadHeroesComponent } from './upload-heroes/upload-heroes.component';
     HeroListComponent,
     HeroCardComponent,
     HeroFormComponent,
-    UploadHeroesComponent
+    UploadHeroesComponent,
+    HeroFavoriteComponent,
+    HeroDeleteDialogComponent
+  ],
+  entryComponents: [
+    HeroDeleteDialogComponent
   ],
   providers: [
-    HeroService
+    HeroService,
+    HeroFormService
+  ],
+  exports: [
+    HeroListComponent,
+    HeroCardComponent,
   ]
 })
 export class HeroesModule { }

@@ -3,31 +3,44 @@ import { QueryFn } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { FirestoreService } from './firestore.service';
 import * as firebase from 'firebase';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 /**
  * Abstract class for Database Communication
  */
 
 @Injectable()
-export abstract class FirebaseDatabaseService<ItemClass> extends FirestoreService<ItemClass> {
+export class FirebaseDatabaseService<ItemClass> extends FirestoreService<ItemClass> {
 
-  getItem (id: string): Observable<ItemClass> {
-    return super.doc$(id).valueChanges();
+  getTimestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
   }
 
-  addItem (item: ItemClass): void {
-    super.col$().add(item);
+  getItem (path: string, id: string): Observable<ItemClass> {
+    return super.doc$(path, id).valueChanges();
   }
 
-  updateItem (id: string, new_data: any): void {
-    super.doc$(id).update(new_data);
+  insertItem (path: string, item: ItemClass): Promise<DocumentReference> {
+    return super.col$(path).add(item);
   }
 
-  deleteItem (id: string): void {
-    super.doc$(id).delete();
+  updateItem (path: string, id: string, data: any): Promise<void> {
+    return super.doc$(path, id).update(data);
   }
 
-  getItems (queryFn?: QueryFn): Observable<ItemClass[]> {
-    return super.colWithIds$(queryFn);
+  upsertItem(path: string, id: string, data: any) {
+    return super.doc$(path, id).set(data, {merge: true});
+  }
+
+  setItem (path: string, id: string, data: any): Promise<void> {
+    return super.doc$(path, id).set(data);
+  }
+
+  deleteItem (path: string, id: string): Promise<void> {
+    return super.doc$(path, id).delete();
+  }
+
+  getItems (path: string, queryFn?: QueryFn): Observable<ItemClass[]> {
+    return super.colWithIds$(path, queryFn);
   }
 }
