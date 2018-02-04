@@ -5,6 +5,7 @@
     "installMode": "prefetch",
     "resources": {
       "files": [
+        "/favicon.ico",
         "/index.html"
       ],
       "versionedFiles": [
@@ -26,28 +27,18 @@
       ]
     }
   }],
-  "dataGroups": [{
-    "name": "api-freshness",
-    "urls": [
-      "/heroes"
-    ],
-    "cacheConfig": {
-      "maxSize": 100,
-      "maxAge": "1h",
-      "timeout": "10s",
-      "strategy": "freshness"
+  "dataGroups": [
+    {
+      "name": "api-freshness",
+      "urls": [
+        "/api"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "1h",
+        "timeout": "5s",
+        "strategy": "freshness"
+      }
     }
-  }, {
-    "name": "api-performance",
-    "urls": [
-      "/",
-      "/about-us",
-      "sign-in"
-    ],
-    "cacheConfig": {
-      "maxSize": 100,
-      "maxAge": "4h",
-      "strategy": "performance"
-    }
-  }]
+  ]
 }

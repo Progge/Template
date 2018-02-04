@@ -1,8 +1,8 @@
 {
   "short_name": "Template",
   "name": "Progge AB Template",
-  "start_url": "/",
-  "theme_color": "#f48c5b",
+  "start_url": "index.html?launcher=homescreen",
+  "theme_color": "#673ab7",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
